@@ -1,6 +1,7 @@
 const Reflux     = require('reflux')
 const StyleSheet = require('react-style')
 const Navigation = require('react-router').Navigation
+const Navbar     = require('./Navbar')
 
 module.exports = React.createClass({
   displayName: 'Portfolio',
@@ -8,10 +9,16 @@ module.exports = React.createClass({
   getInitialState() {
     return {}
   },
+  componentWillMount() {
+    document.getElementsByTagName('html')[0].style.height = 'auto'
+  },
   render() {
     return (
 
       <div styles={styles.container}>
+
+        { /* NAVBAR*/ }
+        <Navbar/>
 
         { /* CONTENT */ }
         <div styles={styles.content}>
@@ -143,14 +150,13 @@ var styles = StyleSheet.create({
     height: 'auto',
     paddingBottom: 30,
     backgroundColor: 'transparent'
-  },
+  },  
   content: {
     padding: 20,
     minWidth: 280,
     maxWidth: 1200,
-    marginTop: 120,
     width: '90%',
-    height: '100%',
+    height: 'auto',
     backgroundColor: 'rgba(0, 0, 0, .2)',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
