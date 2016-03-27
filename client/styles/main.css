@@ -73,3 +73,8 @@ input {
   border: 1px solid #f28e70;
   transition: .2s border linear;
 }
+
+.tab:hover {
+  color: #ec7f72 !important;
+  transition: .1s all linear;
+}
