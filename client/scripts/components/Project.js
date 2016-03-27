@@ -1,10 +1,9 @@
-const Reflux     = require('reflux')
+'use strict'
+
 const StyleSheet = require('react-style')
-const Navigation = require('react-router').Navigation
 
 module.exports = React.createClass({
-  displayName: 'Projects',
-  mixins: [Navigation, Reflux.ListenerMixin],
+  displayName: 'Project',
   getInitialState() {
     return {}
   },
@@ -23,10 +22,10 @@ module.exports = React.createClass({
 
         { /* STACK */ }
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> React.js, Reflux, Node.js, Express.js, WebRtc
+          <span styles={styles.salmon}>Stack:</span> React.js, Reflux, Node.js, Express.js, WebRtc
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Other:</span> OpenTok Api, Gulp.js, Redis
+          <span styles={styles.salmon}>Other:</span> OpenTok Api, Gulp.js, Redis
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
@@ -48,10 +47,10 @@ module.exports = React.createClass({
 
         { /* STACK */ }
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> Angular.js, Node.js, Express.js
+          <span styles={styles.salmon}>Stack:</span> Angular.js, Node.js, Express.js
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Other:</span> Uber API, Yelp API, Google Maps API, Gulp.js
+          <span styles={styles.salmon}>Other:</span> Uber API, Yelp API, Google Maps API, Gulp.js
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
@@ -73,10 +72,10 @@ module.exports = React.createClass({
 
         { /* STACK */ }
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> Angular.js, Node.js, Express.js
+          <span styles={styles.salmon}>Stack:</span> Angular.js, Node.js, Express.js
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Other:</span> Grunt.js, Cheerio, Underscore.js
+          <span styles={styles.salmon}>Other:</span> Grunt.js, Cheerio, Underscore.js
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
@@ -135,7 +134,7 @@ var styles = StyleSheet.create({
     fontWeight: 400,
     letterSpacing: 1.1
   },
-  orange: {
+  salmon: {
     color: '#ec7f72'
   },
   other: {
@@ -145,7 +144,7 @@ var styles = StyleSheet.create({
     color: 'white',
     paddingLeft: 15,
     marginTop: 3,
-    fontSize: 14,
+    fontSize: 15,
   },
   mainFirst: {
     marginTop: 6

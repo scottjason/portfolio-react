@@ -1,17 +1,16 @@
-const Reflux     = require('reflux')
+'use strict'
+
 const StyleSheet = require('react-style')
-const Navigation = require('react-router').Navigation
 
 module.exports = React.createClass({
   displayName: 'Work',
-  mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
     return {}
   },
   render() {
     return (
       <div>
-      
+
         { /* COMPANY */ }
         <p styles={[styles.name, styles.first]}>Oak Labs, Inc.</p>
 
@@ -25,12 +24,12 @@ module.exports = React.createClass({
         <p styles={styles.title}>About Oak</p>
 
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> Angular.js, React.js, Node.js, Express.js, MongoDB
+          <span styles={styles.salmon}>Stack:</span> Angular.js, React.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Tools:</span> D3, C3, Gulp, Stylus, Xcode, Redis, SQL, AWS Redshift, AWS Kinesis, AWS Lambda
+          <span styles={styles.salmon}>Tools:</span> D3, C3, Gulp, Stylus, Xcode, Redis, SQL, AWS Redshift, AWS Kinesis, AWS Lambda
         </p>
-
+        
         <p styles={[styles.mainCopy, styles.mainFirst]}>
           We are bridging the worlds of tech and retail, designing elegant, intuitive customer experiences that will transform the way we think about shopping forever. Starting with our interactive Oak Fitting Room, we’re enabling our retail partners to create magical and meaningful customer experiences, while capturing previously unattainable shopper insights.
         </p>
@@ -61,10 +60,10 @@ module.exports = React.createClass({
         <p styles={styles.title}>About Stanza</p>
 
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
+          <span styles={styles.salmon}>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Tools:</span> Grunt, Redis, AWS, HighCharts, Async, Invision
+          <span styles={styles.salmon}>Tools:</span> Grunt, Redis, AWS, HighCharts, Async, Invision
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
@@ -95,10 +94,10 @@ module.exports = React.createClass({
         <p styles={styles.title}>About Interact</p>
 
         <p styles={styles.stack}>
-          <span styles={styles.orange}>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
+          <span styles={styles.salmon}>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.orange}>Tools:</span> Grunt, Browserify, AWS, Async
+          <span styles={styles.salmon}>Tools:</span> Grunt, Browserify, AWS, Async
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
@@ -162,10 +161,9 @@ var styles = StyleSheet.create({
     marginTop: 3,
     marginBottom: 0,
     fontSize: 13,
-    fontWeight: 400,
-    letterSpacing: 1.1
+    fontWeight: 400
   },
-  orange: {
+  salmon: {
     color: '#ec7f72'
   },
   other: {
@@ -175,7 +173,7 @@ var styles = StyleSheet.create({
     color: 'white',
     paddingLeft: 15,
     marginTop: 3,
-    fontSize: 14,
+    fontSize: 15,
   },
   mainFirst: {
     marginTop: 6

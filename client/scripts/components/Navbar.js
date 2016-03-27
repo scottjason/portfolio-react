@@ -1,18 +1,31 @@
-const Reflux     = require('reflux')
-const StyleSheet = require('react-style')
-const Navigation = require('react-router').Navigation
+'use strict'
+
+const Reflux       = require('reflux')
+const actions      = require('../actions')
+const StyleSheet   = require('react-style')
+const Navigation   = require('react-router').Navigation
+const MainStore    = require('../stores/MainStore')
 
 module.exports = React.createClass({
   displayName: 'Navbar',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isSelected: 'portfolio' }
+    return { isSelected: (window.location.pathname).substring(1) }
   },
+  componentDidMount(){
+    this.listenTo(MainStore, this.onStateChange)
+  },
+  onStateChange: function(cb, opts) {
+    if (typeof this[cb] === 'function') this[cb](opts)
+  },  
   onTabHovered(elem) {
     this.setState({ isHoverd: elem })
   },
-  onTabSelected(elem) {
-    this.setState({ isSelected: elem })
+  onTabSelected(opt) {    
+    actions.onTabSelected(opt)
+  },
+  handleTabSelected(opt) {
+    this.setState({ isSelected: opt })
   },
   onSendEmail() {
     window.location.href = 'mailto:scottleejason@gmail.com?subject=Hi Scott!'

@@ -1,15 +1,16 @@
-const Reflux     = require('reflux')
+'use strict'
+
 const StyleSheet = require('react-style')
 const Navigation = require('react-router').Navigation
 
 module.exports = React.createClass({
   displayName: 'Landing',
-  mixins: [Navigation, Reflux.ListenerMixin],
+  mixins: [Navigation],
   getInitialState() {
     return {}
   },
   onEnter() {
-    this.props.history.pushState(null, '/portfolio')
+    this.props.history.push('/portfolio')
   },
   render() {
     return (

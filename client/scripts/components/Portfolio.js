@@ -1,42 +1,45 @@
-const Reflux     = require('reflux')
-const StyleSheet = require('react-style')
-const Navigation = require('react-router').Navigation
-const Navbar     = require('./Navbar')
-const Work       = require('./Work')
-const Project    = require('./Project')
+'use strict'
+
+const Work         = require('./Work')
+const Navbar       = require('./Navbar')
+const Project      = require('./Project')
+const Toggle       = require('./Toggle')
+const Reflux       = require('reflux')
+const actions      = require('../actions')
+const StyleSheet   = require('react-style')
+const Navigation   = require('react-router').Navigation 
+const MainStore    = require('../stores/MainStore')
 
 module.exports = React.createClass({
   displayName: 'Portfolio',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isSelected: 'work' }
+    return { isToggled: 'work' }
   },
-  onSelectOpt(type) {
-    this.setState({ isSelected: type })
+  componentDidMount(){
+    this.listenTo(MainStore, this.onStateChange)
+  },
+  onStateChange: function(cb, opts) {
+    if (typeof this[cb] === 'function') this[cb](opts)
+  },
+  onToggle(opt) {
+    actions.onToggle(opt)
+  },
+  handleToggle(opt) {
+    this.setState({ isToggled: opt })
+  },
+  handleTabSelected(opt) {
+    this.props.history.push('/' + opt)
   },
   render() {
-    var work = this.state.isSelected === 'work' ? [styles.subnavOpt, styles.isSelected, styles.first] : [styles.subnavOpt, styles.first]
-    var projects = this.state.isSelected === 'projects' ? [styles.subnavOpt, styles.isSelected] : styles.subnavOpt
-    var content = this.state.isSelected === 'work' ? <Work /> : <Project />
+    var content = this.state.isToggled === 'work' ? <Work /> : <Project />
     return (
       <div styles={styles.container}>
-        
         <Navbar />
-
-
         <div styles={styles.content}>
-
-          { /* SUBNAV */ }
-          <div styles={styles.subnav}>
-            <p onClick={this.onSelectOpt.bind(this, 'work')}
-               styles={work}>PROFESSIONAL WORK</p>
-            <p styles={styles.subnavOpt}>//</p>
-            <p onClick={this.onSelectOpt.bind(this, 'projects')}
-               styles={projects}>PORTFOLIO PROJECTS</p>
-          </div>
-        
-        {content}
-        
+          <Toggle onToggleWork={this.onToggle.bind(this, 'work')}
+                  onToggleProjects={this.onToggle.bind(this, 'projects')}/>
+          {content}
         </div>
       </div>
     )
@@ -60,32 +63,9 @@ var styles = StyleSheet.create({
     maxWidth: 1200,
     width: '90%',
     height: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, .2)',
+    backgroundColor: 'rgba(0, 0, 0, .4)',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     border: '1px solid rgba(225, 225, 225, .7)'
-  },  
-  subnav: {
-    position: 'relative',
-    width: 'auto',
-    height: 'auto',
-    marginLeft: 10,
-    textAlign: 'center',
-    fontSize: 18
-  },
-  subnavOpt: {
-    display: 'inline-block',
-    color: 'rgba(225, 225, 225, .8)',    
-    marginLeft: 10,
-    cursor: 'pointer'
-  },
-  first: {
-    marginLeft: 0
-  },
-  noClick: {
-    cursor: 'auto'
-  },
-  isSelected: {
-    color: '#ec7f72'
-  }  
+  }
 })
