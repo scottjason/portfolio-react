@@ -6,26 +6,12 @@ module.exports = React.createClass({
   displayName: 'Work',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isSelected: 'work' }
+    return {}
   },
-  onSelectOpt(type) {
-    this.setState({ isSelected: type })
-  },  
   render() {
-    var work = this.state.isSelected === 'work' ? [styles.subnavOpt, styles.navOptIsSelected, styles.subCopyFirst] : [styles.subnavOpt, styles.subCopyFirst]
-    var projects = this.state.isSelected === 'projects' ? [styles.subnavOpt, styles.navOptIsSelected] : styles.subnavOpt    
     return (
-      <div styles={styles.content}>
-
-        { /* SUBNAV */ }
-        <div styles={styles.subnav}>
-          <p onClick={this.onSelectOpt.bind(this, 'work')}
-             styles={work}>PROFESSIONAL WORK</p>
-          <p styles={styles.subnavOpt}>//</p>
-          <p onClick={this.onSelectOpt.bind(this, 'projects')}
-             styles={projects}>PORTFOLIO PROJECTS</p>
-        </div>
-       
+      <div>
+      
         { /* OAK */ }
         <p styles={[styles.companyName, styles.first]}>Oak Labs, Inc.</p>
 
@@ -82,7 +68,7 @@ module.exports = React.createClass({
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
-          Stanza&#39;s mission is to make scheduling around the web/mobile seamless. Stanza&#39;s smart &nbsp;&#39;Add to Calendar&#39;&nbsp; button is easy to embed in any business&#39;&nbsp; website/mobile app and offers their audience a two-click process to sync future events with any calendar. Current customers include large sports franchises (NCAA, NBA, NHL, NFL) where we&#39;ve seen 50M+ calendar event downloads since launch.          
+          Stanza&#39;s mission is to make scheduling around the web/mobile seamless. Stanza&#39;s smart &nbsp;&#39;Add to Calendar&#39;&nbsp; button is easy to embed in any business&#39;&nbsp; website/mobile app and offers their audience a two-click process to sync future events with any calendar. Current customers include large sports franchises (NCAA, NBA, NHL, NFL) where we&#39;ve seen 50M+ calendar event downloads since launch.
         </p>
 
         { /* CONTRIBUTIONS */ }
@@ -117,7 +103,7 @@ module.exports = React.createClass({
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
           Interact enables the creation of and embedding of quizzes in your website to engage customers and generate leads.<br/>
-          A few of Interact&#39;s growing clientele include Forbes, CBS, Disney, American Red Cross and TED.         
+          A few of Interact&#39;s growing clientele include Forbes, CBS, Disney, American Red Cross and TED.
         </p>
 
         { /* CONTRIBUTIONS */ }
@@ -128,52 +114,17 @@ module.exports = React.createClass({
           Wrote and deployed multiple apis. Built small, reuseable modules in Node.js to fit the app&#39;s needs.<br/>
           Wrote the analytics logic in Node.js that generates a downloadable CSV file.<br/>
           Co-built Interact&#39;s real-time, collaboration feature.
-        </p>          
+        </p>
 
-      { /* END CONTENT */ }
       </div>
     )
   }
 })
 
 var styles = StyleSheet.create({
-content: {
-    padding: 20,
-    minWidth: 280,
-    maxWidth: 1200,
-    width: '90%',
-    height: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, .2)',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    border: '1px solid rgba(225, 225, 225, .7)'
-  },
-  subnav: {
-    position: 'relative',
-    width: 'auto',
-    height: 'auto',
-    marginLeft: 10,
-    textAlign: 'center',
-    fontSize: 18
-  },
-  subnavOpt: {
-    display: 'inline-block',
-    color: 'rgba(225, 225, 225, .8)',    
-    marginLeft: 10,
-    cursor: 'pointer'
-  },
-  subCopyFirst: {
-    marginLeft: 0
-  },
-  noClick: {
-    cursor: 'auto'
-  },
-  navOptIsSelected: {
-    color: '#ec7f72'
-  },
   companyName: {
     margin: 0,
-    marginTop: 40,    
+    marginTop: 40,
     paddingLeft: 15,
     fontSize: 21,
     fontWeight: 400,
