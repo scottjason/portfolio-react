@@ -35,7 +35,7 @@ module.exports = React.createClass({
         <div className='tab'
              onClick={this.onTabSelected.bind(this, 'portfolio')}
              styles={portfolioTab}>
-          <p styles={styles.navOpt}>PORTFOLIO</p>
+          <p styles={styles.tabOpt}>PORTFOLIO</p>
         </div>
 
         { /* RESUME */ }
@@ -43,14 +43,14 @@ module.exports = React.createClass({
              onMouseOver={this.onTabHovered.bind(this, 'resume')}
              onMouseOut={this.onTabHovered.bind(this, null)}
              styles={resumeTab}>
-          <p styles={styles.navOpt}>{resumeCopy}</p>
+          <p styles={styles.tabOpt}>{resumeCopy}</p>
         </div>
 
         { /* ABOUT */ }
         <div className='tab'
              onClick={this.onTabSelected.bind(this, 'about')}
              styles={aboutTab}>
-          <p styles={styles.navOpt}>ABOUT</p>
+          <p styles={styles.tabOpt}>ABOUT</p>
         </div>
 
         { /* CONTACT */ }        
@@ -58,7 +58,7 @@ module.exports = React.createClass({
              onMouseOver={this.onTabHovered.bind(this, 'contact')}
              onMouseOut={this.onTabHovered.bind(this, null)}
              styles={contactTab}>
-          <p styles={styles.navOpt}>{contactCopy}</p>
+          <p styles={styles.tabOpt}>{contactCopy}</p>
         </div>
       </div>
     )
@@ -90,7 +90,7 @@ var styles = StyleSheet.create({
     borderTopRightRadius: 5,
     cursor: 'pointer'
   },
-  navOpt: {
+  tabOpt: {
     fontSize: 13,
     zIndex: 1,
   },

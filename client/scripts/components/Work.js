@@ -12,10 +12,10 @@ module.exports = React.createClass({
     return (
       <div>
       
-        { /* OAK */ }
-        <p styles={[styles.companyName, styles.first]}>Oak Labs, Inc.</p>
+        { /* COMPANY */ }
+        <p styles={[styles.name, styles.first]}>Oak Labs, Inc.</p>
 
-        <div styles={styles.companyLine}></div>
+        <div styles={styles.line}></div>
 
         { /* TITLE */ }
         <p styles={styles.title}>Principal Engineer</p>
@@ -27,7 +27,7 @@ module.exports = React.createClass({
         <p styles={styles.stack}>
           <span styles={styles.orange}>Stack:</span> Angular.js, React.js, Node.js, Express.js, MongoDB
         </p>
-        <p styles={[styles.stack, styles.tools]}>
+        <p styles={[styles.stack, styles.other]}>
           <span styles={styles.orange}>Tools:</span> D3, C3, Gulp, Stylus, Xcode, Redis, SQL, AWS Redshift, AWS Kinesis, AWS Lambda
         </p>
 
@@ -48,10 +48,10 @@ module.exports = React.createClass({
         </p>
 
 
-        { /* STANZA */ }
-        <p styles={styles.companyName}>Stanza</p>
+        { /* COMPANY */ }
+        <p styles={styles.name}>Stanza</p>
 
-        <div styles={styles.companyLine}></div>
+        <div styles={styles.line}></div>
 
         { /* TITLE */ }
         <p styles={styles.title}>Frontend Engineer</p>
@@ -63,7 +63,7 @@ module.exports = React.createClass({
         <p styles={styles.stack}>
           <span styles={styles.orange}>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
         </p>
-        <p styles={[styles.stack, styles.tools]}>
+        <p styles={[styles.stack, styles.other]}>
           <span styles={styles.orange}>Tools:</span> Grunt, Redis, AWS, HighCharts, Async, Invision
         </p>
 
@@ -82,10 +82,10 @@ module.exports = React.createClass({
           Built Stanza&#39;s dashboard v2 alongside lead frontend Yash Saxena and lead designer Jonathan Capecchi (shipped Sept 2015).
         </p>
 
-        { /* INTERACT */ }
-        <p styles={styles.companyName}>Interact</p>
+        { /* COMPANY */ }
+        <p styles={styles.name}>Interact</p>
 
-        <div styles={styles.companyLine}></div>
+        <div styles={styles.line}></div>
 
         { /* TITLE */ }
         <p styles={styles.title}>Software Engineer</p>
@@ -97,7 +97,7 @@ module.exports = React.createClass({
         <p styles={styles.stack}>
           <span styles={styles.orange}>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
         </p>
-        <p styles={[styles.stack, styles.tools]}>
+        <p styles={[styles.stack, styles.other]}>
           <span styles={styles.orange}>Tools:</span> Grunt, Browserify, AWS, Async
         </p>
 
@@ -122,7 +122,7 @@ module.exports = React.createClass({
 })
 
 var styles = StyleSheet.create({
-  companyName: {
+  name: {
     margin: 0,
     marginTop: 40,
     paddingLeft: 15,
@@ -133,7 +133,7 @@ var styles = StyleSheet.create({
   first: {
     marginTop: 20
   },
-  companyLine: {
+  line: {
     width: 275,
     height: 1,
     backgroundColor: 'rgba(225, 225, 225, .8)',
@@ -168,7 +168,7 @@ var styles = StyleSheet.create({
   orange: {
     color: '#ec7f72'
   },
-  tools: {
+  other: {
     marginTop: 1
   },
   mainCopy: {

@@ -11,15 +11,12 @@ module.exports = React.createClass({
   getInitialState() {
     return { isSelected: 'work' }
   },
-  componentWillMount() {
-    document.getElementsByTagName('html')[0].style.height = 'auto'
-  },
   onSelectOpt(type) {
     this.setState({ isSelected: type })
   },
   render() {
-    var work = this.state.isSelected === 'work' ? [styles.subnavOpt, styles.navOptIsSelected, styles.subCopyFirst] : [styles.subnavOpt, styles.subCopyFirst]
-    var projects = this.state.isSelected === 'projects' ? [styles.subnavOpt, styles.navOptIsSelected] : styles.subnavOpt
+    var work = this.state.isSelected === 'work' ? [styles.subnavOpt, styles.isSelected, styles.first] : [styles.subnavOpt, styles.first]
+    var projects = this.state.isSelected === 'projects' ? [styles.subnavOpt, styles.isSelected] : styles.subnavOpt
     var content = this.state.isSelected === 'work' ? <Work /> : <Project />
     return (
       <div styles={styles.container}>
@@ -82,13 +79,13 @@ var styles = StyleSheet.create({
     marginLeft: 10,
     cursor: 'pointer'
   },
-  subCopyFirst: {
+  first: {
     marginLeft: 0
   },
   noClick: {
     cursor: 'auto'
   },
-  navOptIsSelected: {
+  isSelected: {
     color: '#ec7f72'
   }  
 })

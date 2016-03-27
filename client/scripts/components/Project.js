@@ -13,7 +13,7 @@ module.exports = React.createClass({
       <div>
 
         { /* APP */ }
-        <p styles={[styles.appName, styles.first]}>Broadcast It</p>
+        <p styles={[styles.name, styles.first]}>Broadcast It</p>
 
         <div styles={styles.line}></div>
 
@@ -38,7 +38,7 @@ module.exports = React.createClass({
 
         
         { /* APP */ }
-        <p styles={styles.appName}>You Are Here</p>
+        <p styles={styles.name}>You Are Here</p>
 
         <div styles={styles.line}></div>
 
@@ -63,7 +63,7 @@ module.exports = React.createClass({
 
 
         { /* APP */ }
-        <p styles={styles.appName}>Scrape Rentals</p>
+        <p styles={styles.name}>Scrape Rentals</p>
 
         <div styles={styles.line}></div>
 
@@ -92,7 +92,7 @@ module.exports = React.createClass({
 })
 
 var styles = StyleSheet.create({
-  appName: {
+  name: {
     margin: 0,
     marginTop: 40,
     paddingLeft: 15,
