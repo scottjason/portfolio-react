@@ -1,42 +1,27 @@
 const Reflux     = require('reflux')
 const StyleSheet = require('react-style')
 const Navigation = require('react-router').Navigation
-const Navbar     = require('./Navbar')
 
 module.exports = React.createClass({
-  displayName: 'Portfolio',
+  displayName: 'Work',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isSelected: 'work' }
-  },
-  componentWillMount() {
-    document.getElementsByTagName('html')[0].style.height = 'auto'
-  },
-  onSelectOpt(type) {
-    this.setState({ isSelected: type })
+    return {}
   },
   render() {
-    var work = this.state.isSelected === 'work' ? [styles.subnavOpt, styles.navOptIsSelected, styles.subCopyFirst] : [styles.subnavOpt, styles.subCopyFirst]
-    var projects = this.state.isSelected === 'projects' ? [styles.subnavOpt, styles.navOptIsSelected] : styles.subnavOpt
+
     return (
-
-      <div styles={styles.container}>
-
-        { /* NAVBAR*/ }
-        <Navbar/>
-
-        { /* CONTENT */ }
         <div styles={styles.content}>
 
           { /* SUBNAV */ }
           <div styles={styles.subnav}>
             <p onClick={this.onSelectOpt.bind(this, 'work')}
                styles={work}>PROFESSIONAL WORK</p>
-            <p styles={styles.subnavOpt}>//</p>
+            <p styles={[styles.subnavOpt, styles.noClick]}>//</p>
             <p onClick={this.onSelectOpt.bind(this, 'projects')}
                styles={projects}>PORTFOLIO PROJECTS</p>
           </div>
-         
+
           { /* OAK */ }
           <p styles={[styles.companyName, styles.first]}>Oak Labs, Inc.</p>
 
@@ -144,113 +129,10 @@ module.exports = React.createClass({
         { /* END CONTENT */ }
         </div>
 
-      { /* END CONTAINER */ }
-      </div>
     )
   }
 })
 
 var styles = StyleSheet.create({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: 'auto',
-    paddingBottom: 30,
-    backgroundColor: 'transparent'
-  },  
-  content: {
-    padding: 20,
-    minWidth: 280,
-    maxWidth: 1200,
-    width: '90%',
-    height: 'auto',
-    backgroundColor: 'rgba(0, 0, 0, .2)',
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    border: '1px solid rgba(225, 225, 225, .7)'
-  },
-  subnav: {
-    position: 'relative',
-    width: 'auto',
-    height: 'auto',
-    marginLeft: 10,
-    textAlign: 'center',
-    fontSize: 18
-  },
-  subnavOpt: {
-    display: 'inline-block',
-    color: 'rgba(225, 225, 225, .8)',    
-    marginLeft: 10,
-    cursor: 'pointer'
-  },
-  subCopyFirst: {
-    marginLeft: 0
-  },
-  noClick: {
-    cursor: 'auto'
-  },
-  navOptIsSelected: {
-    color: '#ec7f72'
-  },
-  companyName: {
-    margin: 0,
-    marginTop: 40,    
-    paddingLeft: 15,
-    fontSize: 21,
-    fontWeight: 400,
-    color: 'white'
-  },
-  first: {
-    marginTop: 20
-  },
-  companyLine: {
-    width: 275,
-    height: 1,
-    backgroundColor: 'rgba(225, 225, 225, .8)',
-    marginLeft: 11,
-    marginTop: -4
-  },
-  title: {
-    color: '#2baade',
-    paddingLeft: 15,
-    marginTop: 10,
-    marginBottom: 0,
-    fontSize: 16,
-    fontWeight: 400,
-    letterSpacing: 1.1
-  },
-  date: {
-    color: 'white',
-    paddingLeft: 15,
-    marginTop: 3,
-    fontSize: 14,
-    fontWeight: 400
-  },
-  stack: {
-    color: 'rgba(225, 225, 225, .9)',
-    paddingLeft: 15,
-    marginTop: 3,
-    marginBottom: 0,
-    fontSize: 13,
-    fontWeight: 400,
-    letterSpacing: 1.1
-  },
-  orange: {
-    color: '#ec7f72'
-  },
-  tools: {
-    marginTop: 1
-  },
-  mainCopy: {
-    color: 'white',
-    paddingLeft: 15,
-    marginTop: 3,
-    fontSize: 14,
-  },
-  mainFirst: {
-    marginTop: 6
-  }
+
 })
