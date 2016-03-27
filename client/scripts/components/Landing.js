@@ -20,9 +20,7 @@ module.exports = React.createClass({
         <div styles={styles.content}>
 
           {/* HEADER */}
-          <p id='name' styles={styles.header}>
-            SCOTT JASON
-          </p>
+          <p id='name' styles={styles.header}>SCOTT JASON</p>
           
           <div styles={styles.divider}></div>
 
