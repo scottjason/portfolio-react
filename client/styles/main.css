@@ -17,16 +17,9 @@ body {
   background-color: #454f58;
   -webkit-perspective: 1000;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background: url(https://s3-us-west-1.amazonaws.com/sj-portfolio/bg-compressed.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url(images/bg-img.jpg) no-repeat center center fixed;
   background-size: cover;
+  user-select: none;  
 }
 
 * {

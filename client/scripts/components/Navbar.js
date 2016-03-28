@@ -17,11 +17,11 @@ module.exports = React.createClass({
   },
   onStateChange: function(cb, opts) {
     if (typeof this[cb] === 'function') this[cb](opts)
-  },  
+  },
   onTabHovered(elem) {
     this.setState({ isHoverd: elem })
   },
-  onTabSelected(opt) {    
+  onTabSelected(opt) {
     actions.onTabSelected(opt)
   },
   handleTabSelected(opt) {
@@ -66,7 +66,7 @@ module.exports = React.createClass({
           <p styles={styles.tabOpt}>ABOUT</p>
         </div>
 
-        { /* CONTACT */ }        
+        { /* CONTACT */ }
         <div onClick={this.onSendEmail}
              onMouseOver={this.onTabHovered.bind(this, 'contact')}
              onMouseOut={this.onTabHovered.bind(this, null)}
@@ -86,6 +86,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     width: '90%',
     maxWidth: 1200,
+    minWidth: 300,
     height: '130px'
   },
   tab: {

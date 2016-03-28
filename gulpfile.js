@@ -1,79 +1,143 @@
 'use strict'
 
-const fs         = require('fs')
-const gulp       = require('gulp')
-const rimraf     = require('rimraf')
-const stream     = require('vinyl-source-stream')
-const flatten    = require('gulp-flatten')
-const reactify   = require('reactify')
-const nodemon    = require('gulp-nodemon')
-const babelify   = require('babelify')
-const browserify = require('browserify')
-const scriptsDir = './client/scripts/'
-const stylesDir  = './client/styles/'
-const targetDir  = './client/dist/'
-const entryPoint = 'main.js'
+const fs           = require('fs')
+const gulp         = require('gulp')
+const rimraf       = require('rimraf')
+const stream       = require('vinyl-source-stream')
+const reactify     = require('reactify')
+const concat       = require('gulp-concat')
+const nodemon      = require('gulp-nodemon')
+const babelify     = require('babelify')
+const browserify   = require('browserify')
+const runSequence  = require('run-sequence')
+const autoprefixer = require('gulp-autoprefixer')
+const scriptsDir   = './client/scripts/'
+const stylesDir    = './client/styles/'
+const buildDir     = './client/dist/'
+const entryPoint   = 'main.js'
 
 require('colors')
 
-gulp.task('default', ['init', 'server'])
-gulp.task('build', ['init'])
 
-gulp.task('init', (cb) => {
-  rimraf(targetDir, () => {
-    console.log('Gulp Log, Target Directory Removed'.magenta)
-     fs.mkdirSync(targetDir)
-      console.log('Gulp Log, Target Directory Created'.magenta)
-      browserify({ entries: [scriptsDir + entryPoint], debug: true })
-        .transform(reactify)
-        .transform('babelify', {presets: ['es2015', 'react']})        
-        .bundle()
-        .pipe(stream(entryPoint))    
-        .pipe(gulp.dest(targetDir))
-        console.log('Gulp Log, Bundle Created'.magenta)
-        copyStyles(cb)
-    })
+/**
+ * @name default
+ * @desc run for development
+ */
+
+gulp.task('default', (cb) => {
+  runSequence('delete', 'create', 'scripts', 'styles', 'copy', 'server', cb)
 })
 
-function copyStyles(cb) {
-  gulp.src(stylesDir + '**/**.css')
-    .pipe(flatten())
-    .pipe(gulp.dest(targetDir))
-    console.log('Gulp Log, Styles Copied'.magenta)
-    if (gulp.seq.indexOf('build') > -1) return cb()
-    watchFiles(cb)
-}
 
-function watchFiles(cb) {
-  gulp.watch(scriptsDir + '**/**.js', ['bundle'])
-  gulp.watch(stylesDir + '**/**.css', ['copyStyles'])  
-  console.log('Gulp Log, Watching Files'.magenta)  
-  cb()
-}
+/**
+ * @name build
+ * @desc run post install
+ */
+gulp.task('build', (cb) => {
+  runSequence('delete', 'create', 'scripts', 'styles', 'copy', cb)
+})
 
-gulp.task('bundle', (cb) => {
-  return browserify({ entries: [scriptsDir + entryPoint], debug: true })
-    .transform(reactify)
-    .transform('babelify', {presets: ['es2015', 'react']})     
-    .bundle()
-    .pipe(stream(entryPoint))    
-    .pipe(gulp.dest(targetDir))
+
+/**
+ * @name delete
+ * @desc delete build dir
+ */
+
+gulp.task('delete', (cb) => {
+  rimraf(buildDir, () => {
+    console.log('Gulp Log, Deleted Build Dir'.magenta)
     cb()
+  })
 })
 
-gulp.task('copyStyles', (cb) => {
- return gulp.src(stylesDir + '**/**.css')
-    .pipe(flatten())
-    .pipe(gulp.dest(targetDir))
-    cb()    
+
+/**
+ * @name create
+ * @desc create build dir
+ */
+
+gulp.task('create', (cb) => {
+  fs.mkdirSync('client/dist')
+  console.log('Gulp Log, Created Build Dir'.magenta)
+  cb()
 })
 
-gulp.task('server', ['init'],  () => {
+
+/**
+ * @name scripts
+ * @desc bundles main.js
+ */
+
+gulp.task('scripts', (cb) => {
+  browserify({ entries: [scriptsDir + entryPoint], debug: true })
+    .transform(reactify)
+    .transform('babelify', { presets: ['es2015', 'react'] })
+    .bundle()
+    .pipe(stream(entryPoint))
+    .pipe(gulp.dest(buildDir))
+  console.log('Gulp Log, Scripts Bundle Created'.magenta)
+  cb()
+})
+
+
+/**
+ * @name styles
+ * @desc bundles main.css
+ */
+
+gulp.task('styles', (cb) => {
+  gulp.src(['client/styles/lib/opensans.css',
+      'client/styles/lib/roboto.css',
+      'client/styles/lib/icomoon.css',
+      'client/styles/main.css'
+    ])
+    .pipe(concat('main.css'))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(gulp.dest(buildDir))
+  console.log('Gulp Log, Styles Bundle Created'.magenta)
+  cb()
+})
+
+
+/**
+ * @name copy
+ * @desc copys assets
+ */
+
+gulp.task('copy', (cb) => {
+  gulp.src(['client/assets/fonts/**/*']).pipe(gulp.dest('client/dist/fonts'))
+  gulp.src(['client/assets/images/**/*']).pipe(gulp.dest('client/dist/images'))
+  console.log('Gulp Log, Assets Copied'.magenta)
+  cb()
+})
+
+
+/**
+ * @name server
+ * @desc starts server
+ */
+
+gulp.task('server', () => {
   return nodemon({ script: 'server/app.js', ignore: ['client/**/*'] })
     .on('start', () => {
-      console.log('Gulp Log, Server Started'.green)
+      console.log('Gulp Log, Server Started'.magenta)
+      watch()
     })
     .on('restart', () => {
       console.log('Gulp Log, Server Restarted'.green)
     })
 })
+
+
+/**
+ * @name watch
+ * @desc watches files after the server starts
+ */
+function watch() {
+  gulp.watch('client/scripts/**/*.js', ['scripts'])
+  gulp.watch('client/styles/**/*.css', ['styles'])
+  console.log('Gulp Log, Watching Files'.magenta)
+}
