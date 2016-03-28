@@ -26,16 +26,23 @@ module.exports = React.createClass({
         <div styles={styles.content}>
 
           {/* HEADER */}
-          <p id='name' styles={styles.header}>SCOTT JASON</p>
+          <p id='name'
+             styles={styles.header}>SCOTT JASON
+          </p>
           
-          <div styles={styles.divider}></div>
+          <div className='landingLine'
+               styles={styles.divider}>
+          </div>
 
           {/* SUB-HEADER */}
-          <p styles={styles.subheader}> Software Engineer, San Francisco, Ca</p>
+          <p className='subHeader'
+             styles={styles.subheader}> Software Engineer, San Francisco, Ca
+          </p>
           
           {/* LINE + CIRCLE */}
           <div styles={line}></div>
-          <div styles={circle}
+          <div className='circle'
+               styles={circle}
                onMouseOver={this.onHover.bind(this, 'circle')}
                onMouseOut={this.onHover.bind(this, null)}
                onClick={this.onEnter}></div>

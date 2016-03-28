@@ -1,17 +1,33 @@
 @media (max-width: 736px) {
+  #name {
+    font-size: 24px !important;
+  }
+  .subHeader {
+    font-size: 14px !important;
+  }
+  .landingLine {
+    margin-top: -7px !important;
+    max-width: 280px !important;
+  }
+  .circle {
+    top: 149px !important;
+  }
   .toggleOpt {
     font-size: 16px !important;
     display: block !important;
   }
-  .company {
+  .header {
     font-size: 16px !important;
   }
   .title,
-  .date,
   .about,
   .contributions,
   .mainCopy {
     font-size: 14px !important;
+  }
+  .description,
+  .date {
+    font-size: 13px !important;
   }
   .date {
     max-width: 200px;

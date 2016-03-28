@@ -22,17 +22,24 @@ module.exports = React.createClass({
 
         { /* APP */ }
         <div styles={styles.containerTop}>
-          <p onMouseOver={this.onHover.bind(this, 'broadcast')}
+          <p className='header'
+             onMouseOver={this.onHover.bind(this, 'broadcast')}
              onMouseOut={this.onHover.bind(this, null)}
              styles={broadcast}>Broadcast It
           </p>
           <i className='icon-earth'></i>
-          <div styles={styles.line}></div>
+          <div className='line'
+               styles={styles.line}></div>
         </div>
 
         { /* TITLE */ }
-        <p styles={styles.title}>Broadcast A Live Video Stream, Promote & Share, Join Other Streams</p>
-        <p styles={styles.date}>December 2015 @ San Francisco, Ca</p>
+        <p className='description'
+           styles={styles.title}>Broadcast A Live Video Stream, Promote & Share, Join Other Streams
+        </p>
+        
+        <p className='date'
+           styles={styles.date}>December 2015<br/>San Francisco, Ca
+        </p>
 
         { /* STACK */ }
         <p styles={styles.stack}>
@@ -42,19 +49,21 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Other:</span> OpenTok Api, Gulp.js, Redis
         </p>
 
-        <p styles={[styles.mainCopy, styles.mainFirst]}>
-          Broadcast It allows anyone to create a live, shareable video stream. It can be shared directly to 
-          the publisher&#39;s facebook wall or by the provided url. Friends and followers will be redirected 
-          to the live broadcast and the real-time viewer count will be reflected in the publisher&#39;s UI.
-          <br/>
-          <br/>
-          WebRtc functionality is implemented via the OpenTok API.
+        <p className='mainCopy'
+           styles={[styles.mainCopy, styles.mainFirst]}>
+           Broadcast It allows anyone to create a live, shareable video stream. It can be shared directly to 
+           the publisher&#39;s facebook wall or by the provided url. Friends and followers will be redirected 
+           to the live broadcast and the real-time viewer count will be reflected in the publisher&#39;s UI.
+           <br/>
+           <br/>
+           WebRtc functionality is implemented via the OpenTok API.
         </p>
 
 
         { /* APP */ }
         <div styles={styles.containerTop}>
-          <p onMouseOver={this.onHover.bind(this, 'here')}
+          <p className='header'
+             onMouseOver={this.onHover.bind(this, 'here')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://you-are-here-app.herokuapp.com')}
              styles={here}>You Are Here
@@ -62,13 +71,18 @@ module.exports = React.createClass({
           <i className='icon-earth'
              onClick={this.onOpenLink.bind(this, 'http://you-are-here-app.herokuapp.com')}>
           </i>
-          <div styles={styles.line}></div>
+          <div className='line'
+               styles={styles.line}></div>
         </div>
 
 
         { /* TITLE */ }
-        <p styles={styles.title}>Search Places, Get Reviews, Request Uber</p>
-        <p styles={styles.date}>September 2015 @ San Francisco, Ca</p>
+        <p className='description'
+           styles={styles.title}>Search Places, Get Reviews, Request Uber
+        </p>
+        <p className='description'
+           styles={styles.date}>September 2015<br/>San Francisco, Ca
+        </p>
 
         { /* STACK */ }
         <p styles={styles.stack}>
@@ -78,21 +92,23 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Other:</span> Uber API, Yelp API, Google Maps API, Gulp.js
         </p>
 
-        <p styles={[styles.mainCopy, styles.mainFirst]}>
-          You Are Here integrates the Uber Api, Yelp Api and the Google Maps Api. It also implements oAuth 2.0 and 
-          deep-linking into Uber&#39;s native iOS app. Provides a search box to query for types of places 
-          in the area (bars, dinner, dentist, etc) and the search results render details about the places 
-          along with the yelp reviews and the uber ride-price and time-estimates.
-          <br/>
-          <br/>
-          When using iOS, there will also be a &#39;request uber&#39; button next to each listing. You are here is 
-          mobile-first and fully responsive.
+        <p className='mainCopy'
+           styles={[styles.mainCopy, styles.mainFirst]}>
+           You Are Here integrates the Uber Api, Yelp Api and the Google Maps Api. It also implements oAuth 2.0 and 
+           deep-linking into Uber&#39;s native iOS app. Provides a search box to query for types of places 
+           in the area (bars, dinner, dentist, etc) and the search results render details about the places 
+           along with the yelp reviews and the uber ride-price and time-estimates.
+           <br/>
+           <br/>
+           When using iOS, there will also be a &#39;request uber&#39; button next to each listing. You are here is 
+           mobile-first and fully responsive.
         </p>
 
 
         { /* APP */ }
         <div styles={styles.containerTop}>
-          <p onMouseOver={this.onHover.bind(this, 'scrape')}
+          <p className='header'
+             onMouseOver={this.onHover.bind(this, 'scrape')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://scrape-rentals.herokuapp.com')}
              styles={scrape}>Scrape Rentals
@@ -100,12 +116,18 @@ module.exports = React.createClass({
           <i className='icon-earth'
              onClick={this.onOpenLink.bind(this, 'http://scrape-rentals.herokuapp.com')}>
           </i>
-          <div styles={styles.line}></div>
+          <div className='line'
+               styles={styles.line}>
+          </div>
         </div>
 
         { /* TITLE */ }
-        <p styles={styles.title}>Scrapes Rental Listings in the US</p>
-        <p styles={styles.date}>July 2015 @ San Francisco, Ca</p>
+        <p className='description'
+           styles={styles.title}>Scrapes Rental Listings in the US
+        </p>
+        <p className='date'
+           styles={styles.date}>July 2015<br/>San Francisco, Ca
+        </p>
 
         { /* STACK */ }
         <p styles={styles.stack}>
@@ -115,12 +137,13 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Other:</span> Grunt.js, Cheerio, Underscore.js
         </p>
 
-        <p styles={[styles.mainCopy, styles.mainFirst]}>
-          A mobile-first, fully-responsive web application that scrapes, cleans and renders rental 
-          listings in the US. DOM traversal in Node.js via the Cheerio library.
-          <br/>
-          <br/>
-          Scraped sites include rentals.com and apartments.com
+        <p className='mainCopy'
+           styles={[styles.mainCopy, styles.mainFirst]}>
+           A mobile-first, fully-responsive web application that scrapes, cleans and renders rental 
+           listings in the US. DOM traversal in Node.js via the Cheerio library.
+           <br/>
+           <br/>
+           Scraped sites include rentals.com and apartments.com
         </p>
 
       </div>

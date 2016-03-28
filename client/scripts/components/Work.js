@@ -25,7 +25,7 @@ module.exports = React.createClass({
           <p onMouseOver={this.onHover.bind(this, 'oak')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://oaklabs.is')}
-             className='company'
+             className='header'
              styles={oak}>Oak Labs, Inc.
           </p>
           <i className='icon-earth'
@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
         { /* DATE */ }
         <p className='date'
-           styles={styles.date}>October 2015 - Present @ San Francisco, Ca
+           styles={styles.date}>October 2015 - Present<br/>San Francisco, Ca
         </p>
 
         { /* ABOUT */ }
@@ -54,7 +54,7 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Stack:</span> Angular.js, React.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.salmon}>Tools:</span> D3, C3, Gulp, Stylus, Xcode, Redis, SQL, AWS Redshift, AWS Kinesis, AWS Lambda
+          <span styles={styles.salmon}>Other:</span> D3, C3, Gulp, Stylus, Xcode, Redis, SQL, AWS Redshift, AWS Kinesis, AWS Lambda
         </p>
 
         <p className='mainCopy'
@@ -87,7 +87,7 @@ module.exports = React.createClass({
           <p onMouseOver={this.onHover.bind(this, 'stanza')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://stanza.co')}
-             className='company'
+             className='header'
              styles={stanza}>Stanza
           </p>
           <i className='icon-earth'
@@ -104,7 +104,7 @@ module.exports = React.createClass({
 
         { /* DATE */ }
         <p className='date'
-           styles={styles.date}>March 2015 - October 2015 @ San Francisco, Ca
+           styles={styles.date}>March 2015 - October 2015<br/>San Francisco, Ca
         </p>
 
         { /* ABOUT */ }
@@ -116,7 +116,7 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.salmon}>Tools:</span> Grunt, Redis, AWS, HighCharts, Async, Invision
+          <span styles={styles.salmon}>Other:</span> Grunt, Redis, AWS, HighCharts, Async, Invision
         </p>
 
         <p className='mainCopy'
@@ -157,7 +157,7 @@ module.exports = React.createClass({
           <p onMouseOver={this.onHover.bind(this, 'interact')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://tryinteract.com')}
-             className='company'
+             className='header'
              styles={interact}>Interact
           </p>
           <i className='icon-earth'
@@ -174,7 +174,7 @@ module.exports = React.createClass({
 
         { /* DATE */ }
         <p className='date'
-           styles={styles.date}>December 2014 - March 2015 @ San Francisco, Ca
+           styles={styles.date}>December 2014 - March 2015<br/>Berkeley, Ca
         </p>
 
         { /* ABOUT */ }
@@ -186,7 +186,7 @@ module.exports = React.createClass({
           <span styles={styles.salmon}>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
         </p>
         <p styles={[styles.stack, styles.other]}>
-          <span styles={styles.salmon}>Tools:</span> Grunt, Browserify, AWS, Async
+          <span styles={styles.salmon}>Other:</span> Grunt, Browserify, AWS, Async
         </p>
 
         <p className='mainCopy'
