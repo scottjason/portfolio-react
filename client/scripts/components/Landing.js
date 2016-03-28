@@ -7,12 +7,17 @@ module.exports = React.createClass({
   displayName: 'Landing',
   mixins: [Navigation],
   getInitialState() {
-    return {}
+    return { isHovered: null }
   },
+  onHover(elem) {
+    this.setState({ isHovered: elem })
+  },  
   onEnter() {
     this.props.history.push('/portfolio')
   },
   render() {
+    var circle = this.state.isHovered === 'circle' ? [styles.circle, styles.isHovered] : styles.circle
+    var line = this.state.isHovered === 'circle' ? [styles.line, styles.grow] : styles.line
     return (
 
       <div styles={styles.container}>
@@ -29,8 +34,11 @@ module.exports = React.createClass({
           <p styles={styles.subheader}> Software Engineer, San Francisco, Ca</p>
           
           {/* LINE + CIRCLE */}
-          <div styles={styles.line}></div>
-          <div onClick={this.onEnter} id='circle'></div>
+          <div styles={line}></div>
+          <div styles={circle}
+               onMouseOver={this.onHover.bind(this, 'circle')}
+               onMouseOut={this.onHover.bind(this, null)}
+               onClick={this.onEnter}></div>
         
         </div>
       </div>
@@ -77,8 +85,32 @@ var styles = StyleSheet.create({
   },
   line: {
     margin: 'auto',
+    position: 'absolute', 
+    left: 0,
+    right: 9,
     width: 1,
     height: 75,
-    backgroundColor: 'rgba(225, 225, 225, .4)'
-  }
+    backgroundColor: 'rgba(225, 225, 225, .4)',
+    transition: 'all .2s linear'
+  },
+  grow: {
+    height: 85
+  },
+  circle: {
+    position: 'absolute',
+    margin: 'auto',
+    left: 0,
+    right: 10,
+    top: 181,
+    width: 50,
+    height: 50,
+    backgroundColor: 'transparent',
+    border: '1px solid rgba(225, 225, 225, .4)',
+    borderRadius: 50,
+    cursor: 'pointer',
+    transition: 'all .2s linear'
+  },
+  isHovered: {
+    transform: 'translateY(10px)'
+  }  
 })

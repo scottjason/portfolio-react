@@ -5,16 +5,30 @@ const StyleSheet = require('react-style')
 module.exports = React.createClass({
   displayName: 'Project',
   getInitialState() {
-    return {}
+    return { isHoverd: null }
+  },
+  onOpenLink(link) {
+    window.open(link, '_blank')
+  },
+  onHover(elem) {
+    this.setState({ isHoverd: elem })
   },
   render() {
+    var here = this.state.isHoverd === 'here' ? [styles.name, styles.nameHovered] : styles.name
+    var scrape = this.state.isHoverd === 'scrape' ? [styles.name, styles.nameHovered] : styles.name
+    var broadcast = this.state.isHoverd === 'broadcast' ? [styles.name, styles.nameHovered] : styles.name    
     return (
       <div>
 
         { /* APP */ }
-        <p styles={[styles.name, styles.first]}>Broadcast It</p>
-
-        <div styles={styles.line}></div>
+        <div styles={styles.containerTop}>
+          <p onMouseOver={this.onHover.bind(this, 'broadcast')}
+             onMouseOut={this.onHover.bind(this, null)}
+             styles={broadcast}>Broadcast It
+          </p>
+          <i className='icon-earth'></i>
+          <div styles={styles.line}></div>
+        </div>
 
         { /* TITLE */ }
         <p styles={styles.title}>Broadcast A Live Video Stream, Promote & Share, Join Other Streams</p>
@@ -29,17 +43,28 @@ module.exports = React.createClass({
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
-          Broadcast It allows anyone to create a live, shareable video stream. It can be shared directly to the publisher&#39;s facebook wall or by the provided url. Friends and followers will be redirected to the live broadcast and the real-time viewer count will be reflected in the publisher&#39;s UI.
+          Broadcast It allows anyone to create a live, shareable video stream. It can be shared directly to 
+          the publisher&#39;s facebook wall or by the provided url. Friends and followers will be redirected 
+          to the live broadcast and the real-time viewer count will be reflected in the publisher&#39;s UI.
           <br/>
           <br/>
           WebRtc functionality is implemented via the OpenTok API.
         </p>
 
-        
-        { /* APP */ }
-        <p styles={styles.name}>You Are Here</p>
 
-        <div styles={styles.line}></div>
+        { /* APP */ }
+        <div styles={styles.containerTop}>
+          <p onMouseOver={this.onHover.bind(this, 'here')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'http://you-are-here-app.herokuapp.com')}
+             styles={here}>You Are Here
+          </p>
+          <i className='icon-earth'
+             onClick={this.onOpenLink.bind(this, 'http://you-are-here-app.herokuapp.com')}>
+          </i>
+          <div styles={styles.line}></div>
+        </div>
+
 
         { /* TITLE */ }
         <p styles={styles.title}>Search Places, Get Reviews, Request Uber</p>
@@ -54,17 +79,29 @@ module.exports = React.createClass({
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
-          You Are Here integrates the Uber Api, Yelp Api and the Google Maps Api. It also implements oAuth 2.0 and deep-linking into Uber&#39;s native iOS app. Provides a search box to query for types of places in the area (bars, dinner, dentist, etc) and the search results render details about the places along with the yelp reviews and the uber ride-price and time-estimates.
+          You Are Here integrates the Uber Api, Yelp Api and the Google Maps Api. It also implements oAuth 2.0 and 
+          deep-linking into Uber&#39;s native iOS app. Provides a search box to query for types of places 
+          in the area (bars, dinner, dentist, etc) and the search results render details about the places 
+          along with the yelp reviews and the uber ride-price and time-estimates.
           <br/>
           <br/>
-          When using iOS, there will also be a 'request uber' button next to each listing. You are here is mobile-first and fully responsive.
+          When using iOS, there will also be a &#39;request uber&#39; button next to each listing. You are here is 
+          mobile-first and fully responsive.
         </p>
 
 
         { /* APP */ }
-        <p styles={styles.name}>Scrape Rentals</p>
-
-        <div styles={styles.line}></div>
+        <div styles={styles.containerTop}>
+          <p onMouseOver={this.onHover.bind(this, 'scrape')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'http://scrape-rentals.herokuapp.com')}
+             styles={scrape}>Scrape Rentals
+          </p>
+          <i className='icon-earth'
+             onClick={this.onOpenLink.bind(this, 'http://scrape-rentals.herokuapp.com')}>
+          </i>
+          <div styles={styles.line}></div>
+        </div>
 
         { /* TITLE */ }
         <p styles={styles.title}>Scrapes Rental Listings in the US</p>
@@ -79,7 +116,8 @@ module.exports = React.createClass({
         </p>
 
         <p styles={[styles.mainCopy, styles.mainFirst]}>
-          A mobile-first, fully-responsive web application that scrapes, cleans and renders rental listings in the US. DOM traversal in Node.js via the Cheerio library.
+          A mobile-first, fully-responsive web application that scrapes, cleans and renders rental 
+          listings in the US. DOM traversal in Node.js via the Cheerio library.
           <br/>
           <br/>
           Scraped sites include rentals.com and apartments.com
@@ -91,16 +129,28 @@ module.exports = React.createClass({
 })
 
 var styles = StyleSheet.create({
-  name: {
+  containerTop: {
+    position: 'relative',
     margin: 0,
-    marginTop: 40,
+    padding: 0,
+    width: 'auto',
+    height: 'auto',
+    maxWidth: 290
+  },
+  name: {
+    position: 'relative',
+    display: 'inline-block',
+    margin: 0,
+    marginTop: 20,
     paddingLeft: 15,
     fontSize: 21,
     fontWeight: 400,
-    color: 'white'
+    color: 'white',
+    cursor: 'pointer',
+    transition: 'color .2s ease-out'
   },
-  first: {
-    marginTop: 20
+  nameHovered: {
+    color: '#ec7f72'
   },
   line: {
     width: 275,

@@ -18,7 +18,7 @@ module.exports = React.createClass({
   onStateChange: function(cb, opts) {
     if (typeof this[cb] === 'function') this[cb](opts)
   },
-  onTabHovered(elem) {
+  onHover(elem) {
     this.setState({ isHoverd: elem })
   },
   onTabSelected(opt) {
@@ -35,43 +35,46 @@ module.exports = React.createClass({
     window.open(resume, '_blank')
   },
   render() {
-    var portfolioTab = this.state.isSelected === 'portfolio' ? [styles.tab, styles.isSelected] : styles.tab
-    var resumeTab = this.state.isHoverd === 'resume' ? [styles.tab, styles.isHovered] : styles.tab
-    var resumeCopy = this.state.isHoverd === 'resume' ? 'DOWNLOAD' : 'RESUME'
-    var aboutTab = this.state.isSelected === 'about' ? [styles.tab, styles.isSelected] : styles.tab
-    var contactTab = this.state.isHoverd === 'contact' ? [styles.tab, styles.isHovered] : styles.tab
-    var contactCopy = this.state.isHoverd === 'contact' ? 'EMAIL' : 'CONTACT'
+    var portfolio = this.state.isSelected === 'portfolio' ? [styles.tab, styles.isSelected] : [styles.tab]
+    var about = this.state.isSelected === 'about' ? [styles.tab, styles.isSelected] : [styles.tab]
+    var resume = this.state.isHoverd === 'resume' ? [styles.tab, styles.isHovered] : [styles.tab]
+    var contact = this.state.isHoverd === 'contact' ? [styles.tab, styles.isHovered] : [styles.tab]
+    this.state.isHoverd === 'portfolio' ? portfolio.push(styles.isHovered) : null
+    this.state.isHoverd === 'about' ? about.push(styles.isHovered) : null
     return (
       <div styles={styles.navbar}>
 
         { /* PORTFOLIO */ }
-        <div className='tab'
-             onClick={this.onTabSelected.bind(this, 'portfolio')}
-             styles={portfolioTab}>
+        <div onClick={this.onTabSelected.bind(this, 'portfolio')}
+             onMouseOver={this.onHover.bind(this, 'portfolio')}
+             onMouseOut={this.onHover.bind(this, null)}
+             styles={portfolio}>
           <p styles={styles.tabOpt}>PORTFOLIO</p>
         </div>
 
         { /* RESUME */ }
         <div onClick={this.onDownloadResume}
-             onMouseOver={this.onTabHovered.bind(this, 'resume')}
-             onMouseOut={this.onTabHovered.bind(this, null)}
-             styles={resumeTab}>
-          <p styles={styles.tabOpt}>{resumeCopy}</p>
+             onMouseOver={this.onHover.bind(this, 'resume')}
+             onMouseOut={this.onHover.bind(this, null)}
+             styles={resume}>
+          <p styles={styles.tabOpt}>RESUME</p>
         </div>
 
         { /* ABOUT */ }
         <div className='tab'
              onClick={this.onTabSelected.bind(this, 'about')}
-             styles={aboutTab}>
+             onMouseOver={this.onHover.bind(this, 'about')}
+             onMouseOut={this.onHover.bind(this, null)}
+             styles={about}>
           <p styles={styles.tabOpt}>ABOUT</p>
         </div>
 
         { /* CONTACT */ }
         <div onClick={this.onSendEmail}
-             onMouseOver={this.onTabHovered.bind(this, 'contact')}
-             onMouseOut={this.onTabHovered.bind(this, null)}
-             styles={contactTab}>
-          <p styles={styles.tabOpt}>{contactCopy}</p>
+             onMouseOver={this.onHover.bind(this, 'contact')}
+             onMouseOut={this.onHover.bind(this, null)}
+             styles={contact}>
+          <p styles={styles.tabOpt}>CONTACT</p>
         </div>
       </div>
     )
@@ -102,18 +105,19 @@ var styles = StyleSheet.create({
     borderBottom: 'transparent',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
-    cursor: 'pointer'
+    cursor: 'pointer',
+    'transition': 'color .2s ease-out'
   },
   tabOpt: {
     fontSize: 13,
     zIndex: 1,
   },
   isHovered: {
-    color: '#2baade'
+    color: '#ec7f72'
   },
   isSelected: {
     color: '#ec7f72',
     fontWeight: 600,
-    backgroundColor: '#E4E4E4'
+    backgroundColor: '#dedada'
   }
 })

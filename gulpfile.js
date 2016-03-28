@@ -25,7 +25,7 @@ require('colors')
  */
 
 gulp.task('default', (cb) => {
-  runSequence('delete', 'create', 'scripts', 'styles', 'copy', 'server', cb)
+  runSequence('reset', 'scripts', 'styles', 'copy', 'server', cb)
 })
 
 
@@ -33,33 +33,23 @@ gulp.task('default', (cb) => {
  * @name build
  * @desc run post install
  */
+
 gulp.task('build', (cb) => {
-  runSequence('delete', 'create', 'scripts', 'styles', 'copy', cb)
+  runSequence('reset', 'scripts', 'styles', 'copy', cb)
 })
 
 
 /**
- * @name delete
- * @desc delete build dir
+ * @name reset
+ * @desc deletes and creates build dir
  */
 
-gulp.task('delete', (cb) => {
+gulp.task('reset', (cb) => {
   rimraf(buildDir, () => {
-    console.log('Gulp Log, Deleted Build Dir'.magenta)
+    fs.mkdirSync('client/dist')
+    console.log('Gulp Log, Reset Build Dir'.magenta)
     cb()
   })
-})
-
-
-/**
- * @name create
- * @desc create build dir
- */
-
-gulp.task('create', (cb) => {
-  fs.mkdirSync('client/dist')
-  console.log('Gulp Log, Created Build Dir'.magenta)
-  cb()
 })
 
 
@@ -121,7 +111,7 @@ gulp.task('copy', (cb) => {
  */
 
 gulp.task('server', () => {
-  return nodemon({ script: 'server/app.js', ignore: ['client/**/*'] })
+  nodemon({ script: 'server/app.js', ignore: ['client/**/*'] })
     .on('start', () => {
       console.log('Gulp Log, Server Started'.magenta)
       watch()
@@ -136,6 +126,7 @@ gulp.task('server', () => {
  * @name watch
  * @desc watches files after the server starts
  */
+
 function watch() {
   gulp.watch('client/scripts/**/*.js', ['scripts'])
   gulp.watch('client/styles/**/*.css', ['styles'])

@@ -1,8 +1,6 @@
 'use strict'
 
-const Work         = require('./Work')
 const Navbar       = require('./Navbar')
-const Project      = require('./Project')
 const Reflux       = require('reflux')
 const actions      = require('../actions')
 const StyleSheet   = require('react-style')

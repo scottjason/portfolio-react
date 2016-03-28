@@ -59,6 +59,7 @@ var styles = StyleSheet.create({
   },
   content: {
     padding: 20,
+    paddingRight: 30,
     minWidth: 280,
     maxWidth: 1200,
     width: '90%',
