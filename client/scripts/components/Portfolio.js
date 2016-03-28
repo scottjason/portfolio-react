@@ -1,6 +1,7 @@
 'use strict'
 
 const Work         = require('./Work')
+const Header       = require('./Header')
 const Navbar       = require('./Navbar')
 const Project      = require('./Project')
 const Toggle       = require('./Toggle')
@@ -14,7 +15,7 @@ module.exports = React.createClass({
   displayName: 'Portfolio',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isToggled: 'work' }
+    return { toggled: 'work' }
   },
   componentDidMount(){
     this.listenTo(MainStore, this.onStateChange)
@@ -25,18 +26,24 @@ module.exports = React.createClass({
   onToggle(opt) {
     actions.onToggle(opt)
   },
+  onExit() {
+    this.props.history.push('/')
+  },
   handleToggle(opt) {
-    this.setState({ isToggled: opt })
+    this.setState({ toggled: opt })
   },
   handleTabSelected(opt) {
     this.props.history.push('/' + opt)
   },
   render() {
-    var content = this.state.isToggled === 'work' ? <Work /> : <Project />
+    var content = this.state.toggled === 'work' ? <Work /> : <Project />
     return (
       <div styles={styles.container}>
+       
+        <Header onExit={this.onExit} />
         <Navbar />
-        <div styles={styles.content}>
+       
+        <div styles={styles.content}>   
           <Toggle onToggleWork={this.onToggle.bind(this, 'work')}
                   onToggleProjects={this.onToggle.bind(this, 'projects')}/>
           {content}

@@ -7,17 +7,17 @@ module.exports = React.createClass({
   displayName: 'Landing',
   mixins: [Navigation],
   getInitialState() {
-    return { isHovered: null }
+    return { hovered: null }
   },
   onHover(elem) {
-    this.setState({ isHovered: elem })
+    this.setState({ hovered: elem })
   },  
   onEnter() {
     this.props.history.push('/portfolio')
   },
   render() {
-    var circle = this.state.isHovered === 'circle' ? [styles.circle, styles.isHovered] : styles.circle
-    var line = this.state.isHovered === 'circle' ? [styles.line, styles.grow] : styles.line
+    var circle = this.state.hovered === 'circle' ? [styles.circle, styles.hovered] : styles.circle
+    var line = this.state.hovered === 'circle' ? [styles.line, styles.grow] : styles.line
     return (
 
       <div styles={styles.container}>
@@ -72,7 +72,7 @@ var styles = StyleSheet.create({
   },
   header: {
     position: 'relative',
-    color: 'white',
+    color: 'rgba(225, 225, 225, .9)',
     fontSize: 48,
     fontWeight: 300,
     letterSpacing: '7px',
@@ -117,7 +117,7 @@ var styles = StyleSheet.create({
     cursor: 'pointer',
     transition: 'all .2s linear'
   },
-  isHovered: {
+  hovered: {
     transform: 'translateY(10px)'
   }  
 })

@@ -1,6 +1,7 @@
 'use strict'
 
 const Navbar       = require('./Navbar')
+const Header       = require('./Header')
 const Reflux       = require('reflux')
 const actions      = require('../actions')
 const StyleSheet   = require('react-style')
@@ -11,7 +12,7 @@ module.exports = React.createClass({
   displayName: 'Portfolio',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return {}
+    return { hovered: null }
   },
   componentDidMount(){
     this.listenTo(MainStore, this.onStateChange)
@@ -19,23 +20,50 @@ module.exports = React.createClass({
   onStateChange: function(cb, opts) {
     if (typeof this[cb] === 'function') this[cb](opts)
   },
+  onHover(elem) {
+    this.setState({ hovered: elem })
+  },
   onOpenLink(link) {
     window.open(link, '_blank')
-  },
+  },  
   handleTabSelected(opt) {
     this.props.history.push('/' + opt)
   },
   render() {
+    var github = this.state.hovered === 'github' ? [styles.icon, styles.hovered] : styles.icon
+    var linkedin = this.state.hovered === 'linkedin' ? [styles.icon, styles.hovered] : styles.icon
+    var twitter = this.state.hovered === 'twitter' ? [styles.icon, styles.hovered] : styles.icon    
     return (
       <div styles={styles.container}>
+            
+        <Header />
         <Navbar />
         
         <div styles={styles.content}>
+
+          <div styles={styles.social}>
+            <i onClick={this.onOpenLink.bind(this, 'https://github.com/scottjason')}
+               onMouseOver={this.onHover.bind(this, 'github')}
+               onMouseOut={this.onHover.bind(this, null)}
+               styles={github}
+               className='icon-mark-github'></i>
+            <i onClick={this.onOpenLink.bind(this, 'https://www.linkedin.com/in/scottleejason')}          
+               onMouseOver={this.onHover.bind(this, 'linkedin')}
+               onMouseOut={this.onHover.bind(this, null)}
+               styles={linkedin}
+               className='icon-linkedin'></i>
+            <i onClick={this.onOpenLink.bind(this, 'https://twitter.com/scottleejason')}
+               onMouseOver={this.onHover.bind(this, 'twitter')}
+               onMouseOut={this.onHover.bind(this, null)}
+               styles={twitter}
+               className='icon-twitter'></i>
+          </div>   
+
           <div styles={styles.about}>
             <p styles={[styles.header, styles.firstHeader]}>SCOTT JASON</p>
             <p styles={[styles.header, styles.salmon]}>//</p>
             <p styles={styles.header}>SOFTWARE ENGINEER</p>
-        </div>
+          </div>
           
           <p styles={styles.mainCopy}>
             <span styles={styles.first}>
@@ -170,5 +198,23 @@ var styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20,
     backgroundColor: 'rgba(225, 225, 225, .6)'
-  }
+  },
+  social: {
+    position: 'relative',
+    width: '100%',
+    height: 'auto',
+    marginTop: 15,
+    marginBottom: 5,
+    textAlign: 'center'
+  },
+  icon: {
+    color: 'white',
+    fontSize: 16,
+    margin: '0 20px',
+    cursor: 'pointer',
+    transition: 'color .2s ease-out'
+  },
+   hovered: {
+    color: '#ec7f72'
+  },  
 })

@@ -10,7 +10,7 @@ module.exports = React.createClass({
   displayName: 'Navbar',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
-    return { isSelected: (window.location.pathname).substring(1) }
+    return { selected: (window.location.pathname).substring(1) }
   },
   componentDidMount(){
     this.listenTo(MainStore, this.onStateChange)
@@ -19,13 +19,13 @@ module.exports = React.createClass({
     if (typeof this[cb] === 'function') this[cb](opts)
   },
   onHover(elem) {
-    this.setState({ isHoverd: elem })
+    this.setState({ hovered: elem })
   },
   onTabSelected(opt) {
     actions.onTabSelected(opt)
   },
   handleTabSelected(opt) {
-    this.setState({ isSelected: opt })
+    this.setState({ selected: opt })
   },
   onSendEmail() {
     window.location.href = 'mailto:scottleejason@gmail.com?subject=Hi Scott!'
@@ -35,12 +35,12 @@ module.exports = React.createClass({
     window.open(resume, '_blank')
   },
   render() {
-    var portfolio = this.state.isSelected === 'portfolio' ? [styles.tab, styles.isSelected] : [styles.tab]
-    var about = this.state.isSelected === 'about' ? [styles.tab, styles.isSelected] : [styles.tab]
-    var resume = this.state.isHoverd === 'resume' ? [styles.tab, styles.isHovered] : [styles.tab]
-    var contact = this.state.isHoverd === 'contact' ? [styles.tab, styles.isHovered] : [styles.tab]
-    this.state.isHoverd === 'portfolio' ? portfolio.push(styles.isHovered) : null
-    this.state.isHoverd === 'about' ? about.push(styles.isHovered) : null
+    var portfolio = this.state.selected === 'portfolio' ? [styles.tab, styles.selected] : [styles.tab]
+    var about = this.state.selected === 'about' ? [styles.tab, styles.selected] : [styles.tab]
+    var resume = this.state.hovered === 'resume' ? [styles.tab, styles.hovered] : [styles.tab]
+    var contact = this.state.hovered === 'contact' ? [styles.tab, styles.hovered] : [styles.tab]
+    this.state.hovered === 'portfolio' ? portfolio.push(styles.hovered) : null
+    this.state.hovered === 'about' ? about.push(styles.hovered) : null
     return (
       <div styles={styles.navbar}>
 
@@ -90,7 +90,7 @@ var styles = StyleSheet.create({
     width: '90%',
     maxWidth: 1200,
     minWidth: 300,
-    height: '130px'
+    height: '70px'
   },
   tab: {
     display: 'flex',
@@ -98,7 +98,8 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     width: 120,
     height: 30,
-    marginRight: 10,
+    marginRight: 5,
+    marginLeft: 5,
     color: 'rgba(225, 225, 225, .8)',
     backgroundColor: 'transparent',
     border: '1px solid rgba(225, 225, 225, .7)',
@@ -112,12 +113,11 @@ var styles = StyleSheet.create({
     fontSize: 13,
     zIndex: 1,
   },
-  isHovered: {
+  hovered: {
     color: '#ec7f72'
   },
-  isSelected: {
+  selected: {
     color: '#ec7f72',
-    fontWeight: 600,
-    backgroundColor: '#dedada'
+    backgroundColor: 'rgba(0, 0, 0, .4)'
   }
 })

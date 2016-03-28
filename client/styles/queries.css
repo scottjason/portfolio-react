@@ -1,3 +1,10 @@
+@media (max-width: 1000px) {
+  .name {
+    font-size: 24px !important;
+    letter-spacing: 10px !important;
+  }
+}
+
 @media (max-width: 736px) {
   #name {
     font-size: 24px !important;
@@ -12,9 +19,16 @@
   .circle {
     top: 149px !important;
   }
-  .toggleOpt {
-    font-size: 16px !important;
-    display: block !important;
+  .toggleOpt,
+  .toggleOptSecond {
+    font-size: 18px !important;
+    margin-bottom: 0 !important;
+    margin-top: 20px !important;
+  }
+  .toggleOptSecond {
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+    margin-left: 15px !important;
   }
   .header {
     font-size: 16px !important;

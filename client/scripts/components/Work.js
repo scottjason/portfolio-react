@@ -5,18 +5,18 @@ const StyleSheet = require('react-style')
 module.exports = React.createClass({
   displayName: 'Work',
   getInitialState() {
-    return { isHoverd: null }
+    return { hovered: null }
   },
   onOpenLink(link) {
     window.open(link, '_blank')
   },
   onHover(elem) {
-    this.setState({ isHoverd: elem })
+    this.setState({ hovered: elem })
   },
   render() {
-    var oak = this.state.isHoverd === 'oak' ? [styles.name, styles.nameHovered] : styles.name
-    var stanza = this.state.isHoverd === 'stanza' ? [styles.name, styles.nameHovered] : styles.name
-    var interact = this.state.isHoverd === 'interact' ? [styles.name, styles.nameHovered] : styles.name
+    var oak = this.state.hovered === 'oak' ? [styles.name, styles.hovered] : styles.name
+    var stanza = this.state.hovered === 'stanza' ? [styles.name, styles.hovered] : styles.name
+    var interact = this.state.hovered === 'interact' ? [styles.name, styles.hovered] : styles.name
     return (
       <div>
 
@@ -240,7 +240,7 @@ var styles = StyleSheet.create({
     cursor: 'pointer',
     transition: 'color .2s ease-out'
   },
-  nameHovered: {
+  hovered: {
     color: '#ec7f72'
   },
   line: {
