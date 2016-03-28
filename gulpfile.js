@@ -79,7 +79,8 @@ gulp.task('styles', (cb) => {
   gulp.src(['client/styles/lib/opensans.css',
       'client/styles/lib/roboto.css',
       'client/styles/lib/icomoon.css',
-      'client/styles/main.css'
+      'client/styles/main.css',
+      'client/styles/queries.css'
     ])
     .pipe(concat('main.css'))
     .pipe(autoprefixer({
@@ -90,7 +91,6 @@ gulp.task('styles', (cb) => {
   console.log('Gulp Log, Styles Bundle Created'.magenta)
   cb()
 })
-
 
 /**
  * @name copy

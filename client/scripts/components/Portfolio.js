@@ -61,7 +61,7 @@ var styles = StyleSheet.create({
     padding: 20,
     paddingRight: 30,
     minWidth: 280,
-    maxWidth: 1200,
+    maxWidth: 1100,
     width: '90%',
     height: 'auto',
     backgroundColor: 'rgba(0, 0, 0, .4)',

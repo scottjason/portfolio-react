@@ -105,8 +105,9 @@ var styles = StyleSheet.create({
   },  
   content: {
     padding: 20,
+    paddingRight: 30,
     minWidth: 280,
-    maxWidth: 1200,
+    maxWidth: 1100,
     width: '90%',
     height: 'auto',
     backgroundColor: 'rgba(0, 0, 0, .4)',
@@ -133,7 +134,7 @@ var styles = StyleSheet.create({
   mainCopy: {
     color: 'white',
     paddingLeft: 15,
-    marginTop: 3,
+    marginTop: 20,
     fontSize: 15,
   },
   first: {

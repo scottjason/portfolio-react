@@ -6,7 +6,7 @@ const MainStore    = require('../stores/MainStore')
 
 module.exports = React.createClass({
   displayName: 'Toggle',
-  mixins: [Reflux.ListenerMixin],  
+  mixins: [Reflux.ListenerMixin],
   getInitialState() {
     return { isToggled: 'work', isHoverd: null }
   },
@@ -15,7 +15,7 @@ module.exports = React.createClass({
   },
   onStateChange: function(cb, opts) {
     if (typeof this[cb] === 'function') this[cb](opts)
-  },  
+  },
   onHover(elem) {
     this.setState({ isHoverd: elem })
   },
@@ -28,21 +28,29 @@ module.exports = React.createClass({
     this.state.isHoverd === 'work' ? work.push(styles.hoverd) : null
     projects = this.state.isHoverd === 'projects' ? [styles.toggleOpt, styles.hoverd] : projects
     return (
-      
-      <div styles={styles.toggle}>        
-        
+
+      <div styles={styles.toggle}
+           className='toggle'>
+
         <p onClick={this.props.onToggleWork}
            onMouseOver={this.onHover.bind(this, 'work')}
            onMouseOut={this.onHover.bind(this, null)}
-           styles={work}>PROFESSIONAL WORK</p>
-       
-        <p styles={styles.toggleOpt}>//</p>
-       
+           styles={work}
+           className='toggleOpt'>
+           PROFESSIONAL WORK
+        </p>
+
+        <p styles={styles.toggleOpt}
+           className='toggleOpt'>//</p>
+
         <p onClick={this.props.onToggleProjects}
            onMouseOver={this.onHover.bind(this, 'projects')}
-           onMouseOut={this.onHover.bind(this, null)  }        
-           styles={projects}>PORTFOLIO PROJECTS</p>
-     
+           onMouseOut={this.onHover.bind(this, null)  }
+           styles={projects}
+           className='toggleOpt'>
+          PORTFOLIO PROJECTS
+        </p>
+
       </div>
     )
   }
@@ -58,10 +66,10 @@ var styles = StyleSheet.create({
   },
   toggleOpt: {
     display: 'inline-block',
-    color: 'rgba(225, 225, 225, .8)',    
+    color: 'rgba(225, 225, 225, .8)',
     marginLeft: 10,
     cursor: 'pointer',
-    transition: 'color .2s ease-out'    
+    transition: 'color .2s ease-out'
   },
   hoverd: {
     color: '#ec7f72'
@@ -74,5 +82,5 @@ var styles = StyleSheet.create({
   },
   isSelected: {
     color: '#ec7f72'
-  }  
+  }
 })
