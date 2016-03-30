@@ -1,0 +1,33 @@
+.navbarWrap
+  display flex
+  flex-direction row
+  align-items flex-end
+  justify-content center
+  width 90%
+  max-width 1100px
+  min-width 280px
+  height 70px
+  .tab
+    display flex
+    justify-content center
+    align-items center
+    width 120px
+    height 30px
+    margin-right 5px
+    margin-left 5px
+    color $light-white-8
+    background-color transparent
+    border 1px solid $light-white-8
+    border-bottom transparent
+    border-top-left-radius 5px
+    border-top-right-radius 5px
+    cursor pointer
+    transition color .2s ease-out
+    &.selected
+      color $salmon
+      background-color $bg-color
+    &.hovered
+      color $salmon
+    .opt
+      font-size 13px
+      z-index 1

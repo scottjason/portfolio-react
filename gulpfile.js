@@ -2,10 +2,11 @@
 
 const fs           = require('fs')
 const gulp         = require('gulp')
+const concat       = require('gulp-concat')
 const rimraf       = require('rimraf')
+const stylus       = require('gulp-stylus')
 const stream       = require('vinyl-source-stream')
 const reactify     = require('reactify')
-const concat       = require('gulp-concat')
 const nodemon      = require('gulp-nodemon')
 const babelify     = require('babelify')
 const browserify   = require('browserify')
@@ -25,7 +26,7 @@ require('colors')
  */
 
 gulp.task('default', (cb) => {
-  runSequence('reset', 'scripts', 'styles', 'copy', 'server', cb)
+  runSequence('reset', 'scripts', 'libStyles', 'devStyles', 'copy', 'server', cb)
 })
 
 
@@ -35,7 +36,7 @@ gulp.task('default', (cb) => {
  */
 
 gulp.task('build', (cb) => {
-  runSequence('reset', 'scripts', 'styles', 'copy', cb)
+  runSequence('reset', 'scripts', 'libStyles', 'devStyles', 'copy', cb)
 })
 
 
@@ -71,30 +72,57 @@ gulp.task('scripts', (cb) => {
 
 
 /**
- * @name styles
- * @desc bundles main.css
+ * @name stylus
+ * @desc transforms stylus files
  */
 
-gulp.task('styles', (cb) => {
+ gulp.task('stylus', () => {
+  console.log('Gulp Log, Transform Stylus'.magenta)
+  return gulp.src('./client/styles/main.styl')
+    .pipe(stylus())
+    .pipe(gulp.dest(buildDir));
+})
+
+
+
+/**
+ * @name devStyles
+ * @desc autoprefxies main.css after stylus files are transformed
+ */ 
+
+gulp.task('devStyles', ['stylus'], () => {
+  console.log('Gulp Log, Autoprefix Main Styles'.magenta)
+  return gulp.src('client/dist/main.css')
+    .pipe(autoprefixer({ 
+      cascade: false 
+    }))
+    .pipe(gulp.dest(buildDir))
+})
+
+
+/**
+ * @name libStyles
+ * @desc concats lib styles
+ */
+
+gulp.task('libStyles', (cb) => {
   gulp.src(['client/styles/lib/opensans.css',
       'client/styles/lib/roboto.css',
-      'client/styles/lib/icomoon.css',
-      'client/styles/main.css',
-      'client/styles/queries.css'
+      'client/styles/lib/icomoon.css'
     ])
-    .pipe(concat('main.css'))
+    .pipe(concat('lib.css'))
     .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
       cascade: false
     }))
     .pipe(gulp.dest(buildDir))
-  console.log('Gulp Log, Styles Bundle Created'.magenta)
+  console.log('Gulp Log, Lib Styles Created'.magenta)
   cb()
 })
 
+
 /**
  * @name copy
- * @desc copys assets
+ * @desc copies assets
  */
 
 gulp.task('copy', (cb) => {
@@ -129,6 +157,6 @@ gulp.task('server', () => {
 
 function watch() {
   gulp.watch('client/scripts/**/*.js', ['scripts'])
-  gulp.watch('client/styles/**/*.css', ['styles'])
+  gulp.watch('client/styles/**/*.styl', ['devStyles'])
   console.log('Gulp Log, Watching Files'.magenta)
 }
