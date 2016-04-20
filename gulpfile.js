@@ -157,6 +157,6 @@ gulp.task('server', () => {
 
 function watch() {
   gulp.watch('client/scripts/**/*.js', ['scripts'])
-  gulp.watch('client/styles/**/*.styl', ['devStyles'])
+  gulp.watch('client/**/*.styl', ['devStyles'])
   console.log('Gulp Log, Watching Files'.magenta)
 }

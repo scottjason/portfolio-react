@@ -100,7 +100,7 @@ module.exports = React.createClass({
         <p className='aboutCompany'>About Stanza</p>
 
         <p className='stack'>
-          <span>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
+          <span className='salmon'>Stack:</span> Angular.js, Node.js, Express.js, MongoDB
         </p>
 
         <p className='stack other'>
@@ -172,7 +172,7 @@ module.exports = React.createClass({
         <p className='aboutCompany'>About Interact</p>
 
         <p className='stack'>
-          <span>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
+          <span className='salmon'>Stack:</span> Backbone.js, Node.js, Express.js, MongoDB
         </p>
 
         <p className='stack other'>
