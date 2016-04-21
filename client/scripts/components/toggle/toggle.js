@@ -59,7 +59,7 @@ module.exports = React.createClass({
              PROFESSIONAL WORK
           </p>
 
-          <p className='toggleOpt cursorAuto'>//</p>
+          <p className='toggleOpt slash'>//</p>
 
           <p onClick={this.props.onToggleProjects}
              onMouseOver={this.onHover.bind(this, 'projects')}

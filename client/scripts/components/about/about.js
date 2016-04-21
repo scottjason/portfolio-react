@@ -8,7 +8,7 @@ const Navigation   = require('react-router').Navigation
 const MainStore    = require('../../stores/MainStore')
 
 module.exports = React.createClass({
-  displayName: 'Portfolio',
+  displayName: 'About',
   mixins: [Navigation, Reflux.ListenerMixin],
   getInitialState() {
     return { hovered: null }
