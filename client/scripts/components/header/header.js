@@ -8,8 +8,7 @@ module.exports = React.createClass({
   render() {
     return (
       <div className='headerWrap'>
-        <p className='title'
-           onClick={this.props.onExit}
+        <p onClick={this.props.onExit}
            onTouchTap={this.props.onExit}>
            SCOTT JASON
         </p>

@@ -31,38 +31,58 @@
         transition color .2s ease-out
         &.hovered
           color $salmon
-    .headerWrap
+    .headerContainer
       position relative
       width auto
       height auto
-      margin-left 10px
+      margin-left 15px
       font-size 18px
-      text-align center
+      text-align left
+      @media (max-width : 736px)
+        font-size 16px
+        margin-top 25px
+        text-align center
       .header
         display inline-block
         color $light-white-8
         margin-left 10px
+        @media (max-width : 736px)
+          display block
+          margin  7px 0
         &.first
           margin-left 0
         &.salmon
           color $salmon
+          @media (max-width : 736px)
+            margin  0
     .line
       position relative
-      width 600px
+      width 90%
       height 1px
-      margin 20px 0 20px 15px
+      margin 30px auto
+      max-width 600px
       background-color $light-white-6
     .copy
       color white
       padding-left 15px
       margin-top 20px
       font-size 15px
+      @media (max-width : 736px)
+        text-align center
       &.first
         font-size 16px
       &.second
         font-size 18px
         color $salmon
       span
+        &.first
+          font-size 21px
+          @media (max-width : 736px)
+            font-size 18px
+        &.second
+          font-size 18px
+          @media (max-width : 736px)
+            font-size 16px
         &.blue
           color $blue
         &.pointer
@@ -72,5 +92,6 @@
           color $salmon
         &.author
           position relative
-          margin-top 8px
+          top 6px
+          color rgba(225, 225, 225, .8)
           font-size 14px

@@ -58,7 +58,7 @@ module.exports = React.createClass({
             </i>
           </div>
 
-          <div className='headerWrap'>
+          <div className='headerContainer'>
             <p className='header first'>SCOTT JASON</p>
             <p className='header salmon'>//</p>
             <p className='header'>SOFTWARE ENGINEER</p>
@@ -67,7 +67,12 @@ module.exports = React.createClass({
           <p className='copy'>
 
             <span className='first'>
-              When I was a junior in college I started a band with a friend of mine.
+              When I was a junior in college I started a
+              <span onClick={this.onOpenLink.bind(this, 'https://en.wikipedia.org/wiki/Thriving_Ivory')}
+                    className='blue pointer'>
+                &nbsp;band&nbsp;
+              </span>
+              with a friend of mine.
             </span>
 
             <br/> <br/>
@@ -88,12 +93,7 @@ module.exports = React.createClass({
             would hit number one on the Billboard Heat Seeker Charts and the band would go on to become a VH1 &nbsp;&#39;You Oughtta Know Artist&#39;,
             become RIAA Certified Gold and share the stage with some of the most talented musicians in the world.
 
-            <span onClick={this.onOpenLink.bind(this, 'https://en.wikipedia.org/wiki/Thriving_Ivory')}
-                  className='blue pointer'>
-              &nbsp;Learn more&nbsp;
-            </span>
-
-            about Thriving Ivory or visit iTunes, Spotify, et al.
+            To learn more about Thriving Ivory visit iTunes, Spotify, et al.
 
             <br/> <br/>
 
