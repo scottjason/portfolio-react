@@ -6,6 +6,7 @@ const Reflux       = require('reflux')
 const actions      = require('../../actions')
 const Navigation   = require('react-router').Navigation
 const MainStore    = require('../../stores/MainStore')
+var opts           = require('../../constants/').opts
 
 module.exports = React.createClass({
   displayName: 'About',
@@ -36,7 +37,7 @@ module.exports = React.createClass({
       <div className='aboutWrap'>
 
         <Header />
-        <Navbar />
+        <Navbar opts={opts} />
 
         <div className='content'>
 

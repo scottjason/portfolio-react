@@ -36,6 +36,7 @@
     "react-dom": "^0.14.3",
     "react-localstorage": "^0.2.8",
     "react-router": "^1.0.0-rc3",
+    "react-select": "^0.9.1",
     "react-tap-event-plugin": "^0.2.2",
     "reactify": "^1.1.1",
     "reflux": "^0.3.0",

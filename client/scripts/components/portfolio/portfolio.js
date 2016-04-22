@@ -9,6 +9,7 @@ const Reflux       = require('reflux')
 const actions      = require('../../actions')
 const Navigation   = require('react-router').Navigation 
 const MainStore    = require('../../stores/MainStore')
+var opts           = require('../../constants/').opts
 
 module.exports = React.createClass({
   displayName: 'Portfolio',
@@ -40,7 +41,7 @@ module.exports = React.createClass({
       <div className='portfolio'>
        
         <Header onExit={this.onExit} />
-        <Navbar />
+        <Navbar opts={opts} />
        
         <div className='portfolioContent'>   
           <Toggle onToggleWork={this.onToggle.bind(this, 'work')}
