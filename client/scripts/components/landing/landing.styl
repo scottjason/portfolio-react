@@ -19,11 +19,18 @@
       font-size 48px
       font-weight 300
       letter-spacing 7px
+      transition font-size .2s linear
+      @media (max-width : 736px)
+        font-size 36px
     .divider
       margin 20px 0 0 0
       width 600px
       height 1px
       background-color $light-white-3
+      transition all .2s linear
+      @media (max-width : 736px)
+        width 80%
+        margin 15px auto
     .subheader
       color $light-white-7
       font-size 16px
@@ -35,7 +42,7 @@
       width 1px
       height 75px
       background-color $light-white-4
-      transition: all .2s linear
+      transition all .2s linear
       &.grow
         height 85px
     .circle
