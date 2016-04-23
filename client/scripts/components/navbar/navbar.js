@@ -31,7 +31,7 @@ module.exports = React.createClass({
     }
   },
   onDropdownTabSelected(opt) {
-    if (opt !== 'resume' && opt !== 'contact')
+    if (opt !== 'resume' && opt !== 'contact' && this.state.selected !== opt)
       this.props.opts.map(this.applySelected(opt))
     if (opt === 'resume') return this.onDownloadResume()
     if (opt === 'contact') return this.onSendEmail()
