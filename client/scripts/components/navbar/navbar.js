@@ -25,13 +25,17 @@ module.exports = React.createClass({
   handleTabSelected(opt) {
     this.setState({ selected: opt })
   },
+  isExit(e) {
+    if (e.target && typeof e.target.className === 'string' && e.target.className.indexOf('noExit') === -1 && this.state.isToggled)
+      this.onToggleDropdown()
+  },
   applySelected(optSelected) {
     return (opt) => {
       return opt.isSelected = (opt.name).toLowerCase() === optSelected
     }
   },
   onDropdownTabSelected(opt) {
-    if (opt !== 'resume' && opt !== 'contact' && this.state.selected !== opt)
+    if (opt !== 'resume' && opt !== 'contact')
       this.props.opts.map(this.applySelected(opt))
     if (opt === 'resume') return this.onDownloadResume()
     if (opt === 'contact') return this.onSendEmail()
@@ -59,8 +63,8 @@ module.exports = React.createClass({
     if (tab.indexOf('grow') > -1) {
       var dropdownOpts = this.props.opts.map((opt, i) => {
         return (
-            <div key={i} className='tab' onClick={this.onDropdownTabSelected.bind(null, opt.name.toLowerCase())}>
-              <p>{opt.name}</p>
+            <div key={i} className='tab noExit' onClick={this.onDropdownTabSelected.bind(null, opt.name.toLowerCase())}>
+              <p className='noExit'>{opt.name}</p>
             </div>
         )
       })
@@ -68,8 +72,8 @@ module.exports = React.createClass({
        var dropdownOpts = this.props.opts.map((opt, i) => {
         if (opt.isSelected) {
           return (
-             <div key={i} className='tab' onClick={this.onDropdownTabSelected.bind(null, opt.name.toLowerCase())}>
-              <p>{opt.name}</p>
+             <div key={i} className='tab noExit' onClick={this.onDropdownTabSelected.bind(null, opt.name.toLowerCase())}>
+              <p className='noExit'>{opt.name}</p>
             </div>
           )
         }

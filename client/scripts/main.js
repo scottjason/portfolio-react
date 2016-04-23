@@ -6,9 +6,12 @@ const browserHistory    = require('history/lib/createBrowserHistory')
 const Landing           = require('./components/landing/landing')
 const Portfolio         = require('./components/portfolio/portfolio')
 const About             = require('./components/about/about')
+const actions           = require('./actions/')
 const { Router, Route } = require('react-router')
 
 require('react-tap-event-plugin')()
+
+window.isExit = e => actions.isExit(e)
 
 ReactDOM.render((
   <Router history={browserHistory()}>
