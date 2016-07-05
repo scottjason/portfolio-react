@@ -111,7 +111,7 @@ module.exports = React.createClass({
 
             For a more thorough list of languages and frameworks, please
 
-            <span onClick={this.onOpenLink.bind(this, 'https://dl.dropboxusercontent.com/u/7084808/Resume/Scott-Jason-Resume.pdf')}
+            <span onClick={this.onOpenLink.bind(this, 'https://dl.dropboxusercontent.com/u/7084808/Scott-Jason-Resume-June-2016%20.pdf')}
                   className='blue pointer'>
               &nbsp;download&nbsp;
             </span>

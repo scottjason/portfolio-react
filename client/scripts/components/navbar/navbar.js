@@ -45,7 +45,7 @@ module.exports = React.createClass({
     window.location.href = 'mailto:scottleejason@gmail.com?subject=Hi Scott!'
   },
   onDownloadResume() {
-    var resume = 'https://dl.dropboxusercontent.com/u/7084808/Scott-Jason-Resume-June-2016.pdf'
+    var resume = 'https://dl.dropboxusercontent.com/u/7084808/Scott-Jason-Resume-June-2016%20.pdf'
     window.open(resume, '_blank')
   },
   onToggleDropdown() {
