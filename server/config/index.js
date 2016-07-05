@@ -6,5 +6,5 @@ module.exports = {
   server: {
     port: process.env.PORT || 3000
   },
-  root: path.normalize(__dirname + '../../../')
+  root: path.normalize(path.join(__dirname, '..', '..'))
 }

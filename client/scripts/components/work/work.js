@@ -37,7 +37,7 @@ module.exports = React.createClass({
         </div>
 
         { /* TITLE */ }
-        <p className='title'>Principal Engineer</p>
+        <p className='title'>Principal Engineer | Full-Stack</p>
 
         { /* DATE */ }
         <p className='date'>October 2015 - Present<br/>San Francisco, Ca</p>
@@ -91,7 +91,7 @@ module.exports = React.createClass({
         </div>
 
         { /* TITLE */ }
-        <p className='title'>Frontend Engineer</p>
+        <p className='title'>Full-Stack Engineer</p>
 
         { /* DATE */ }
         <p className='date'>March 2015 - October 2015<br/>San Francisco, Ca</p>
