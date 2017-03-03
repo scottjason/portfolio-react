@@ -17,14 +17,23 @@
     @media (max-width : 736px)
       display block
       margin  7px 0
+    &.selected
+      color $salmon
+      @media (max-width : 736px)
+        display block
+        margin  7px 0
     &.first
       margin-left 15px
       @media (max-width : 736px)
         margin  0
+      &.selected
+        color $salmon
+        @media (max-width : 736px)
+          margin  0
     &.slash
-      color $salmon
+      color lighten($salmon, 85%)
       cursor auto
-    &.hovered, .selected
+    &.hovered
       color $salmon
 
 .social

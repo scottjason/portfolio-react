@@ -25,7 +25,7 @@ module.exports = React.createClass({
     this.setState({ toggled: opt })
   },
   render() {
-    var work = this.state.toggled === 'work' ? 'toggleOpt selected first' : 'toggleOpt first'
+    var work = this.state.toggled === 'work' ? 'toggleOpt first selected' : 'toggleOpt first'
     var projects = this.state.toggled === 'projects' ? 'toggleOpt selected'  : 'toggleOpt'
     work = this.state.hovered === 'work' ? work += ' hovered' : work
     projects = this.state.hovered === 'projects' ? projects += ' hovered' : projects
