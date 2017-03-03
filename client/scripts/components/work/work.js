@@ -91,7 +91,7 @@ module.exports = React.createClass({
         <p className='title'>Principal Software Engineer | Full-Stack</p>
 
         { /* DATE */ }
-        <p className='date'>October 2015 - Present<br/>San Francisco, Ca</p>
+        <p className='date'>October 2015 - July 2016<br/>San Francisco, Ca</p>
 
         { /* ABOUT */ }
         <p className='aboutCompany'>About Oak</p>
