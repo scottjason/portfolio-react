@@ -25,6 +25,57 @@ module.exports = React.createClass({
         <div className='work'>
           <p onMouseOver={this.onHover.bind(this, 'oak')}
              onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'https://savvy.is')}
+             className={oak}>Savvy
+          </p>
+          <i className={oakGlobe}
+             onMouseOver={this.onHover.bind(this, 'oakGlobe')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'https://savvy.is')}>
+          </i>
+          <div className='workLine'></div>
+        </div>
+
+        { /* TITLE */ }
+        <p className='title'>Senior Software Engineer</p>
+
+        { /* DATE */ }
+        <p className='date'>July 2016 - Present<br/>San Francisco, Ca</p>
+
+        { /* ABOUT */ }
+        <p className='aboutCompany'>About Savvy</p>
+
+        <p className='stack'>
+          <span className='salmon'>Stack:</span> React.js, Redux, Ruby on Rails
+        </p>
+
+        <p className='stack other'>
+          <span className='salmon'>Other:</span> Webpack, WebRTC, OpenTok, AWS, Stylus
+        </p>
+
+        <p className='workCopy first'>
+          Savvy is most effective way to create high-impact employees. 
+          Find thousands of vetted and affordable coaches to coach employees 
+          in a variety of skills via one-on-one video sessions.
+        </p>
+
+        { /* CONTRIBUTIONS */ }
+        <p className='contributions'>My Contributions</p>
+
+        <p className='workCopy'>
+           Built various aspects of the WebRTC-based app which uses google calendar and the OpenTok API
+          to allow learners to book 1-1 video sessions with teachers. The payment system is also through the Savvy platform. 
+          Additionaly, I led the effort to integrate webpack and frontend testing using mocha and chai.
+        </p>
+        <p className='workCopy'>
+           Currently building the Savvy analytics platform.
+        </p>
+
+
+        { /* COMPANY */ }
+        <div className='work'>
+          <p onMouseOver={this.onHover.bind(this, 'oak')}
+             onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://oaklabs.is')}
              className={oak}>Oak Labs, Inc.
           </p>
@@ -71,7 +122,9 @@ module.exports = React.createClass({
            store&#39;s inventory.
         </p>
         <p className='workCopy'>
-           Currently building the Oak Analytics platform.
+          Additionaly I built the Oak analytics platform used by the corporate team at Polo Ralph Lauren. This involved 
+          the integration of the Oak fitting room mirror transaction logs using AWS Redshift, AWS Lambda, AWS Firehose and Node.js. 
+          I also wrote Oak's Frontend tests for interview candidates as well as maintained the company's website.
         </p>
 
 
@@ -91,7 +144,7 @@ module.exports = React.createClass({
         </div>
 
         { /* TITLE */ }
-        <p className='title'>Full-Stack Engineer</p>
+        <p className='title'>Full-Stack Software Engineer</p>
 
         { /* DATE */ }
         <p className='date'>March 2015 - October 2015<br/>San Francisco, Ca</p>
