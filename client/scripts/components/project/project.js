@@ -21,39 +21,6 @@ module.exports = React.createClass({
         { /* APP */ }
         <div className='project'>
           <p className='header'
-             onMouseOver={this.onHover.bind(this, 'broadcast')}
-             onMouseOut={this.onHover.bind(this, null)}
-             className={broadcast}>Broadcast It
-          </p>
-          <i className='icon-earth'></i>
-          <div className='line'></div>
-        </div>
-
-        { /* TITLE */ }
-        <p className='title'>Broadcast A Live Video Stream, Promote & Share, Join Other Streams</p>
-        <p className='date'>December 2015<br/>San Francisco, Ca</p>
-
-        { /* STACK */ }
-        <p className='stack'>
-          <span className='salmon'>Stack:</span> React.js, Reflux, Node.js, Express.js, WebRtc
-        </p>
-        <p className='stack other'>
-          <span className='salmon'>Other:</span> OpenTok Api, Gulp.js, Redis
-        </p>
-
-        <p className='mainCopy mainFirst'>
-           Broadcast It allows anyone to create a live, shareable video stream. It can be shared directly to
-           the publisher&#39;s facebook wall or by the provided url. Friends and followers will be redirected
-           to the live broadcast and the real-time viewer count will be reflected in the publisher&#39;s UI.
-           <br/>
-           <br/>
-           WebRtc functionality is implemented via the OpenTok API.
-        </p>
-
-
-        { /* APP */ }
-        <div className='project'>
-          <p className='header'
              onMouseOver={this.onHover.bind(this, 'here')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'http://you-are-here-app.herokuapp.com')}
