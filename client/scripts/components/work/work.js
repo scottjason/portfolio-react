@@ -16,8 +16,10 @@ module.exports = React.createClass({
     var savvy = this.state.hovered === 'savvy' ? 'name hovered' : 'name'
     var instacart = this.state.hovered === 'instacart' ? 'name hovered' : 'name'
     var stanza = this.state.hovered === 'stanza' ? 'name hovered' : 'name'
+    var throtl = this.state.hovered === 'throtl' ? 'name hovered' : 'name'
     var interact = this.state.hovered === 'interact' ? 'name hovered' : 'name'
     var oakGlobe = this.state.hovered === 'oakGlobe' ? 'icon-earth hovered' : 'icon-earth'
+    var throtlGlobe = this.state.hovered === 'throtlGlobe' ? 'icon-earth hovered' : 'icon-earth'
     var savvyGlobe = this.state.hovered === 'savvyGlobe' ? 'icon-earth hovered' : 'icon-earth'
     var stanzaGlobe = this.state.hovered === 'stanzaGlobe' ? 'icon-earth hovered' : 'icon-earth'
     var instacartGlobe = this.state.hovered === 'instacartGlobe' ? 'icon-earth hovered' : 'icon-earth'
@@ -25,12 +27,49 @@ module.exports = React.createClass({
     return (
       <div>
 
+        { /* COMPANY THROTL */ }
+        <div className='work'>
+          <p onMouseOver={this.onHover.bind(this, 'throtl')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'http://www.throtl.com')}
+             className={throtl}>Throtl
+          </p>
+          <i className={throtlGlobe}
+             onMouseOver={this.onHover.bind(this, 'throtlGlobe')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'http://www.throtl.com')}>
+          </i>
+          <div className='workLine'></div>
+        </div>
+
+        { /* TITLE */ }
+        <p className='title'>Full-Stack Software Engineer <span style={{color: 'white', fontSize: '12px'}}>(Contract / Remote)</span></p>
+
+        { /* DATE */ }
+        <p className='date'>September 2018 - Present<br/>San Francisco, Ca</p>
+
+        { /* ABOUT */ }
+        <p className='aboutCompany'>About Throtl</p>
+
+        <p className='workCopy first'>
+          Throtl is a classifieds marketplace for auto parts.
+        </p>
+
+        { /* CONTRIBUTIONS */ }
+        <p className='contributions'>My Contributions</p>
+
+        <p className='workCopy'>
+          Doing some contract work on their rails app (mostly frontend) while in search of my next full-time role.
+        </p>
+
+
+
         { /* COMPANY INSTACART */ }
         <div className='work'>
           <p onMouseOver={this.onHover.bind(this, 'instacart')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'https://instacart.com')}
-             className={savvy}>Instacart
+             className={instacart}>Instacart
           </p>
           <i className={instacartGlobe}
              onMouseOver={this.onHover.bind(this, 'instacartGlobe')}
