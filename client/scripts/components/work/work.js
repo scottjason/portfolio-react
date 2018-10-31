@@ -13,23 +13,75 @@ module.exports = React.createClass({
   },
   render() {
     var oak = this.state.hovered === 'oak' ? 'name hovered' : 'name'
+    var savvy = this.state.hovered === 'savvy' ? 'name hovered' : 'name'
+    var instacart = this.state.hovered === 'instacart' ? 'name hovered' : 'name'
     var stanza = this.state.hovered === 'stanza' ? 'name hovered' : 'name'
     var interact = this.state.hovered === 'interact' ? 'name hovered' : 'name'
     var oakGlobe = this.state.hovered === 'oakGlobe' ? 'icon-earth hovered' : 'icon-earth'
+    var savvyGlobe = this.state.hovered === 'savvyGlobe' ? 'icon-earth hovered' : 'icon-earth'
     var stanzaGlobe = this.state.hovered === 'stanzaGlobe' ? 'icon-earth hovered' : 'icon-earth'
+    var instacartGlobe = this.state.hovered === 'instacartGlobe' ? 'icon-earth hovered' : 'icon-earth'
     var interactGlobe = this.state.hovered === 'interactGlobe' ? 'icon-earth hovered' : 'icon-earth'
     return (
       <div>
 
-        { /* COMPANY */ }
+        { /* COMPANY INSTACART */ }
         <div className='work'>
-          <p onMouseOver={this.onHover.bind(this, 'oak')}
+          <p onMouseOver={this.onHover.bind(this, 'instacart')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'https://instacart.com')}
+             className={savvy}>Instacart
+          </p>
+          <i className={instacartGlobe}
+             onMouseOver={this.onHover.bind(this, 'instacartGlobe')}
+             onMouseOut={this.onHover.bind(this, null)}
+             onClick={this.onOpenLink.bind(this, 'https://instacart.com')}>
+          </i>
+          <div className='workLine'></div>
+        </div>
+
+        { /* TITLE */ }
+        <p className='title'>Full-Stack Software Engineer</p>
+
+        { /* DATE */ }
+        <p className='date'>April 2017 - November 2018<br/>San Francisco, Ca</p>
+
+        { /* ABOUT */ }
+        <p className='aboutCompany'>About Instacart</p>
+
+        <p className='stack'>
+          <span className='salmon'>Stack:</span> React, Redux, Ruby on Rails
+        </p>
+
+        <p className='stack other'>
+          <span className='salmon'>Other:</span> Redis, Memcached, ElasticSearch, AWS
+        </p>
+
+        <p className='workCopy first'>
+          Instacart is an online grocery delivery service company that works with local stores to deliver groceries to your door.
+        </p>
+
+        { /* CONTRIBUTIONS */ }
+        <p className='contributions'>My Contributions</p>
+
+        <p className='workCopy'>
+          While on the Search & Discovery team I built and maintained some of Instacart’s most crucial features including a backend-driven (machine learning
+          implemented) autocomplete system for personalized search results, the low stock experience as well as the replacements flow.
+        </p>
+        <p className='workCopy'>
+          Worked daily balancing sprints and backlog tasks which encompassed the entire stack of a large codebase and successfully planned for and implemented features to meet quarterly goals while leading the coordination of group efforts when multiple teams were involved.
+        </p>
+
+
+        { /* COMPANY SAVVY */ }
+        <div className='work'>
+          <p onMouseOver={this.onHover.bind(this, 'savvy')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'https://savvy.is')}
-             className={oak}>Savvy
+             className={savvy}>Savvy
           </p>
-          <i className={oakGlobe}
-             onMouseOver={this.onHover.bind(this, 'oakGlobe')}
+          <i className={savvyGlobe}
+             onMouseOver={this.onHover.bind(this, 'savvyGlobe')}
              onMouseOut={this.onHover.bind(this, null)}
              onClick={this.onOpenLink.bind(this, 'https://savvy.is')}>
           </i>
@@ -72,7 +124,8 @@ module.exports = React.createClass({
         </p>
 
 
-        { /* COMPANY */ }
+
+        { /* COMPANY OAK */ }
         <div className='work'>
           <p onMouseOver={this.onHover.bind(this, 'oak')}
              onMouseOut={this.onHover.bind(this, null)}
